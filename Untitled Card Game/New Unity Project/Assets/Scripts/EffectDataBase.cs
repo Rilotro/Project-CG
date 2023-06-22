@@ -28,10 +28,10 @@ public class EffectDataBase : MonoBehaviour
     void Effect1(GameObject Target, Vector2 TAoE, int bDMG){
         Vector2 pos = Target.GetComponent<TileEffects>().pos;
         if((TAoE.x < 0)&&(TAoE.y < 0)){
-            Events.DealDMG(bDMG+BonusDMG, Target);
+            Events.DealDMG(bDMG, Target);
         }else if(TAoE.x == 0){
             for(int i = (int)pos.y; (i < (int)pos.y+(int)TAoE.y)&&(i < 8); i++){
-                Events.DealDMG(bDMG+BonusDMG, Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
+                Events.DealDMG(bDMG, Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
             }
         }else if((TAoE.x != 0)&&(TAoE.y != 0)){
             for(int i = (int)pos.x - ((int)TAoE.x-1)/2; (i <= (int)pos.x + ((int)TAoE.x-1)/2)&&(i < 4); i++){
@@ -42,7 +42,7 @@ public class EffectDataBase : MonoBehaviour
                     if(j < 0){
                         j = 0;
                     }
-                    Events.DealDMG(bDMG+BonusDMG, Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
+                    Events.DealDMG(bDMG, Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
                 }
             }
         }
@@ -50,13 +50,13 @@ public class EffectDataBase : MonoBehaviour
 
     void Effect2(GameObject Target, Vector2 TAoE, int bDMG){
         BonusDMG += 1;
-        updateDMGDesc();
+        Events.giveBDMG(1, -1, null);
         Vector2 pos = Target.GetComponent<TileEffects>().pos;
         if((TAoE.x < 0)&&(TAoE.y < 0)){
-            Events.DealDMG(bDMG+BonusDMG, Target);
+            Events.DealDMG(bDMG, Target);
         }else if(TAoE.x == 0){
             for(int i = (int)pos.y; (i < (int)pos.y+(int)TAoE.y)&&(i < 8); i++){
-                Events.DealDMG(bDMG+BonusDMG, Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
+                Events.DealDMG(bDMG, Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
             }
         }else if((TAoE.x != 0)&&(TAoE.y != 0)){
             for(int i = (int)pos.x - ((int)TAoE.x-1)/2; (i <= (int)pos.x + ((int)TAoE.x-1)/2)&&(i < 4); i++){
@@ -67,7 +67,7 @@ public class EffectDataBase : MonoBehaviour
                     if(j < 0){
                         j = 0;
                     }
-                    Events.DealDMG(bDMG+BonusDMG, Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
+                    Events.DealDMG(bDMG, Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
                 }
             }
         }
@@ -76,12 +76,12 @@ public class EffectDataBase : MonoBehaviour
     void Effect3(GameObject Target, Vector2 TAoE, int bDMG){
         Vector2 pos = Target.GetComponent<TileEffects>().pos;
         if((TAoE.x < 0)&&(TAoE.y < 0)){
-            Events.DealDMG(bDMG+BonusDMG, Target);
-            Events.DealDMG(bDMG+BonusDMG, Target);
+            Events.DealDMG(bDMG, Target);
+            Events.DealDMG(bDMG, Target);
         }else if(TAoE.x == 0){
             for(int i = (int)pos.y; (i < (int)pos.y+(int)TAoE.y)&&(i < 8); i++){
-                Events.DealDMG(bDMG+BonusDMG, Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
-                Events.DealDMG(bDMG+BonusDMG, Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
+                Events.DealDMG(bDMG, Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
+                Events.DealDMG(bDMG, Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
             }
         }else if((TAoE.x != 0)&&(TAoE.y != 0)){
             for(int i = (int)pos.x - ((int)TAoE.x-1)/2; (i <= (int)pos.x + ((int)TAoE.x-1)/2)&&(i < 4); i++){
@@ -92,8 +92,8 @@ public class EffectDataBase : MonoBehaviour
                     if(j < 0){
                         j = 0;
                     }
-                    Events.DealDMG(bDMG+BonusDMG, Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
-                    Events.DealDMG(bDMG+BonusDMG, Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
+                    Events.DealDMG(bDMG, Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
+                    Events.DealDMG(bDMG, Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
                 }
             }
         }
@@ -101,15 +101,15 @@ public class EffectDataBase : MonoBehaviour
 
     void Effect4(){
         BonusDMG += 2;
-        updateDMGDesc();
+        Events.giveBDMG(2, -1, null);
     }
     void Effect5(GameObject Target, Vector2 TAoE, int bDMG){
         Vector2 pos = Target.GetComponent<TileEffects>().pos;
         if((TAoE.x < 0)&&(TAoE.y < 0)){
-            Events.DealDMG((bDMG+BonusDMG)*(-1), Target);
+            Events.DealDMG((bDMG)*(-1), Target);
         }else if(TAoE.x == 0){
             for(int i = (int)pos.y; (i < (int)pos.y+(int)TAoE.y)&&(i < 8); i++){
-                Events.DealDMG((bDMG+BonusDMG)*(-1), Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
+                Events.DealDMG((bDMG)*(-1), Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
             }
         }else if((TAoE.x != 0)&&(TAoE.y != 0)){
             for(int i = (int)pos.x - ((int)TAoE.x-1)/2; (i <= (int)pos.x + ((int)TAoE.x-1)/2)&&(i < 4); i++){
@@ -120,7 +120,7 @@ public class EffectDataBase : MonoBehaviour
                     if(j < 0){
                         j = 0;
                     }
-                    Events.DealDMG((bDMG+BonusDMG)*(-1), Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
+                    Events.DealDMG((bDMG)*(-1), Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
                 }
             }
         }
@@ -147,15 +147,15 @@ public class EffectDataBase : MonoBehaviour
             }
         }
         BonusDMG += 1;
-        updateDMGDesc();
+        Events.giveBDMG(1, -1, null);
     }
     void Effect7(GameObject Target, Vector2 TAoE, int bDMG){
         Vector2 pos = Target.GetComponent<TileEffects>().pos;
         if((TAoE.x < 0)&&(TAoE.y < 0)){
-            Events.DealDMG(bDMG+BonusDMG, Target);
+            Events.DealDMG(bDMG, Target);
         }else if(TAoE.x == 0){
             for(int i = (int)pos.y; (i < (int)pos.y+(int)TAoE.y)&&(i < 8); i++){
-                Events.DealDMG(bDMG+BonusDMG, Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
+                Events.DealDMG(bDMG, Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
             }
         }else if((TAoE.x != 0)&&(TAoE.y != 0)){
             for(int i = (int)pos.x - ((int)TAoE.x-1)/2; (i <= (int)pos.x + ((int)TAoE.x-1)/2)&&(i < 4); i++){
@@ -166,12 +166,12 @@ public class EffectDataBase : MonoBehaviour
                     if(j < 0){
                         j = 0;
                     }
-                    Events.DealDMG(bDMG+BonusDMG, Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
+                    Events.DealDMG(bDMG, Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
                 }
             }
         }
         Events.Draw(1);
-        Events.AddMana(bDMG+BonusDMG);
+        Events.AddMana(bDMG);
     }
     void Effect8(GameObject Target, Vector2 TAoE, int bDMG){
         Events.addEvent(2, 60, Target, TAoE, new Color32(0, 0, 255, 255));
@@ -216,33 +216,6 @@ public class EffectDataBase : MonoBehaviour
         return BonusDMG;
     }
 
-    void updateDMGDesc(){
-        gameObject.GetComponent<CardDataBase>().getCard(1).newDescription(string.Format("Deal *{0}* damage", 5+BonusDMG));
-        gameObject.GetComponent<CardDataBase>().getCard(2).newDescription(string.Format("Increase the damage of all cards by 1, then deal *{0}* damage", 2+BonusDMG));
-        gameObject.GetComponent<CardDataBase>().getCard(3).newDescription(string.Format("Deal *{0}* damage two times", 3+BonusDMG));
-        gameObject.GetComponent<CardDataBase>().getCard(5).newDescription(string.Format("Heal *{0}*. Damage altering effects also affects the amount healed by this card", 3+BonusDMG));
-        gameObject.GetComponent<CardDataBase>().getCard(7).newDescription(string.Format("Deal *{0}*, then draw cards and gain mana equal to that ammount", 1+BonusDMG));
-
-        for(int i = 0; i < gameObject.transform.childCount; i++){
-            switch (gameObject.transform.GetChild(i).GetComponent<CardInfo>().getId()){
-            case 1:
-            gameObject.transform.GetChild(i).transform.GetChild(1).GetComponent<Text>().text = string.Format("Deal *{0}* damage", 5+BonusDMG);
-            break;
-            case 2:
-            gameObject.transform.GetChild(i).transform.GetChild(1).GetComponent<Text>().text = string.Format("Increase the damage of all cards by 1, then deal *{0}* damage", 2+BonusDMG);
-            break;
-            case 3:
-            gameObject.transform.GetChild(i).transform.GetChild(1).GetComponent<Text>().text = string.Format("Deal *{0}* damage two times", 3+BonusDMG);
-            break;
-            case 5:
-            gameObject.transform.GetChild(i).transform.GetChild(1).GetComponent<Text>().text = string.Format("Heal *{0}*. Damage altering effects also affects the amount healed by this card", 3+BonusDMG);
-            break;
-            case 7:
-            gameObject.transform.GetChild(i).transform.GetChild(1).GetComponent<Text>().text = string.Format("Deal *{0}*, then draw cards and gain mana equal to that ammount", 1+BonusDMG);
-            break;
-        }
-        }
-    }
     void Awake()
     {
         Events.CastEvent += Cast;

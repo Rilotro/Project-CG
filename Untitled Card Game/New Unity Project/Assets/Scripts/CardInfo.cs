@@ -18,6 +18,7 @@ public class CardInfo : MonoBehaviour
 
     public void Give(int newId){
         Events.RoundEndEvent += DestroyMe;
+        Events.updateDescEvent += updateDesc;
 
         id = newId;
         description = gameObject.transform.parent.GetComponent<CardDataBase>().cardList[newId].giveDescription();
@@ -64,6 +65,29 @@ public class CardInfo : MonoBehaviour
         gameObject.transform.GetChild(2).transform.GetChild(0).GetComponent<Text>().text = time.ToString();
     }
 
+    void updateDesc(int BDMG, int Bid, GameObject Target){
+        if((Bid == id)||(Bid<0)||(Target == gameObject)){
+            baseDamage += BDMG;
+            switch (id){
+                    case 1:
+                    gameObject.transform.GetChild(1).GetComponent<Text>().text = string.Format("Deal *{0}* damage", baseDamage);
+                    break;
+                    case 2:
+                    gameObject.transform.GetChild(1).GetComponent<Text>().text = string.Format("Increase the damage of all cards by 1, then deal *{0}* damage", baseDamage);
+                    break;
+                    case 3:
+                    gameObject.transform.GetChild(1).GetComponent<Text>().text = string.Format("Deal *{0}* damage two times", baseDamage);
+                    break;
+                    case 5:
+                    gameObject.transform.GetChild(1).GetComponent<Text>().text = string.Format("Heal *{0}*. Damage altering effects also affects the amount healed by this card", baseDamage);
+                    break;
+                    case 7:
+                    gameObject.transform.GetChild(1).GetComponent<Text>().text = string.Format("Deal *{0}*, then draw cards and gain mana equal to that ammount", baseDamage);
+                    break;
+                }
+        }
+    }
+
     public void Ground(BaseEventData data)
     {
         PointerEventData Pdata = (PointerEventData)data;
@@ -86,6 +110,8 @@ public class CardInfo : MonoBehaviour
     }
 
     void OnDisable(){
+        Events.onCardDisable(gameObject);
         Events.RoundEndEvent -= DestroyMe;
+        Events.updateDescEvent -= updateDesc;
     }
 }

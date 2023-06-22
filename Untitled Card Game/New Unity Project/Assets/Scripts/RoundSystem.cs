@@ -81,6 +81,7 @@ public class RoundSystem : MonoBehaviour
         Markers[Closest].addTime(Markers[Closest].getTime() * (-1));
         Markers[Closest].RoundStart();
     }
+    
     public void addUnitTime(int id, int t){
         bool found = false;
         int j = -1;
@@ -111,6 +112,16 @@ public class RoundSystem : MonoBehaviour
                 Markers.Remove(Markers[i]);
                 Destroy(gameObject.transform.GetChild(i).gameObject);
             }
+        }
+    }
+
+    public void removeMarker(int id){
+        bool found = false;
+        for(int i = 2; (i < Markers.Count) && (found == false); i++){
+           if(Markers[i].getId() == id){
+            found = true;
+            Markers.Remove(Markers[i]);
+           }
         }
     }
 

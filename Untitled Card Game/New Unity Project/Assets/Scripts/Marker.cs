@@ -13,6 +13,7 @@ public class Marker : MonoBehaviour
 
     public void giveId(int i, int t, GameObject Target, Vector2 TAoE, Color32 c){
         Events.RoundStartEvent += EventRoundStart;
+        Events.CardDisableEvent += RemoveMe;
         id = i;
         time = (float)t;
         gameObject.transform.GetChild(0).GetComponent<TimeUpdate>().UpdateTime(time);
@@ -67,7 +68,7 @@ public class Marker : MonoBehaviour
                 Events.RoundEnd(id);
                 break;
                 case 3:
-                Target.transform.GetComponent<CardInfo>().baseDamage += 5;
+                Events.giveBDMG(5, 0, Target);
                 Events.AddUnitTime(id, 60);
                 Events.RoundEnd(id);
                 break;
@@ -75,7 +76,15 @@ public class Marker : MonoBehaviour
         }
     }
 
+    void RemoveMe(GameObject Card){
+        if(Target == Card){
+            gameObject.transform.parent.GetComponent<RoundSystem>().removeMarker(id);
+            Destroy(gameObject);
+        }
+    }
+
     void OnDisable(){
         Events.RoundStartEvent -= EventRoundStart;
+        Events.CardDisableEvent -= RemoveMe;
     }
 }

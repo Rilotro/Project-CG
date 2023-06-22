@@ -8,12 +8,12 @@ public class Events : MonoBehaviour
 {
     public static event Action<int> DrawCardsEvent;//DrawCards - DrawC;
     public static event Action<int, GameObject> DealDMGEvent;//Health - DealDMG TileEffects - EffectDMG;
-    public static event Action<GameObject, GameObject> CastEvent;//DrawCards - cardDestroyed, EffectDataBase - Cast;
+    public static event Action<GameObject, GameObject> CastEvent;//EffectDataBase - Cast;
     public static event Action<int, int> AddUnitTimeEvent;//RoundSystem - addUnitTime;
     public static event Action<int> UpdateManaEvent;//ManaPoints - updateMana;
     public static event Action<int, int, GameObject, Vector2, Color32> AddMarkerEvent;//RoundSystem - addEvent;
     public static event Action<int> RoundStartEvent;//EffectDataBase - PlayerRoundStart, EnemyAI - RoundStart, Marker - EventRoundStart, TileEffects - RoundStartRevert;
-    public static event Action<int> RoundEndEvent;//CardInfo - DestroyMe, DrawCards - DestroyAllCards, RoundSystem - EventRoundEnd;
+    public static event Action<int> RoundEndEvent;//CardInfo - DestroyMe, RoundSystem - EventRoundEnd;
     public static event Action<int> GetMana;//DragnDrop - GetMana;
     public static event Action ResumeTurnSystem;//RoundSystem - TurnSystem;
     public static event Action<Vector2, GameObject> AssignTileEvent;//DealDamage - AssignParent;
@@ -21,6 +21,8 @@ public class Events : MonoBehaviour
     public static event Action Relocate;//PlayerRelocation - BeginRelocation;
     public static event Action<Color32> RecolorTiles;//TileEffects - Recolored;
     public static event Action<Vector2> giveTilesAoE;//TileEffects - getAoE;
+    public static event Action<int, int, GameObject> updateDescEvent;//CardInfo - updateDesc, CardDataBase - updateDMGDesc;
+    public static event Action<GameObject> CardDisableEvent;//Marker - RemoveMe, DrawCards - CardDestroyed;
 
     static float wait = -1;
     static bool resumed = true;
@@ -77,6 +79,14 @@ public class Events : MonoBehaviour
 
     public static void giveSize(Vector2 size){//DragnDrop - onClick, TileEffects - onClick;
         giveTilesAoE?.Invoke(size);
+    }
+
+    public static void giveBDMG(int BDMG, int id, GameObject Target){//EffectDataBase - Effects, Marker - EventRoundStart;
+        updateDescEvent?.Invoke(BDMG, id, Target);
+    }
+
+    public static void onCardDisable(GameObject Card){//CardInfo - OnDisable;
+        CardDisableEvent?.Invoke(Card);
     }
 
     public static void RoundEnd(int id){//EndRound - EndonClick, EnemyAI - RoundStart, Marker - EventRoundStart;

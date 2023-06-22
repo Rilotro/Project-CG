@@ -19,8 +19,7 @@ public class DrawCards : MonoBehaviour
     void Awake(){
         PlayerHand = GameObject.Find("PlayerHand");
         Events.DrawCardsEvent += DrawC;
-        Events.CastEvent += cardDestroyed;
-        Events.RoundEndEvent += DestroyAllCards;
+        Events.CardDisableEvent += cardDestroyed;
     }
 
     void Start()
@@ -43,15 +42,9 @@ public class DrawCards : MonoBehaviour
     public int getCardCount(){
         return CardCount;
     }
-    public void cardDestroyed(GameObject Card, GameObject Target){
-        if(Target != null){
+    public void cardDestroyed(GameObject Card){
+        if(Card != null){
             CardCount--;
-        }
-    }
-
-    void DestroyAllCards(int id){
-        if(id == 0){
-            CardCount = 0;
         }
     }
 
@@ -67,7 +60,6 @@ public class DrawCards : MonoBehaviour
 
     void OnDisable(){
         Events.DrawCardsEvent -= DrawC;
-        Events.CastEvent -= cardDestroyed;
-        Events.RoundEndEvent -= DestroyAllCards;
+        Events.CardDisableEvent -= cardDestroyed;
     }
 }

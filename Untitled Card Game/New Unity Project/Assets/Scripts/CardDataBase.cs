@@ -41,12 +41,16 @@ public class CardDataBase : MonoBehaviour
         public void newDescription(string newD){
             description = newD;
         }
+        public void newDMG(int newDamage){
+            damage = newDamage;
+        }
     }
 
     public List<Cards> cardList = new List<Cards> ();
 
     void Awake ()
     {
+        Events.updateDescEvent += updateDMGDesc;
         cardList.Add(new Cards(0, "None", 0, 0, 0, "None", new Vector2(0, 0)));
         cardList.Add(new Cards(1, "Card1", 45, 1, 5, "Deal 5 damage", new Vector2(0, 3)));
         cardList.Add(new Cards(2, "Card2", 30, 2, 2, "Increase the damage of all cards by 1, then deal 2 damage", new Vector2(3, 3)));
@@ -58,7 +62,51 @@ public class CardDataBase : MonoBehaviour
         cardList.Add(new Cards(8, "Card8", 0, 1, 10, "Event: The Enemy takes 10 damage", new Vector2(3, 3)));
     }
 
+    public void updateDMGDesc(int BDMG, int id, GameObject Target){
+        if(Target == null){
+            if(id<0){
+                cardList[1].newDescription(string.Format("Deal *{0}* damage", cardList[1].giveDMG()+BDMG));
+                cardList[1].newDMG(cardList[1].giveDMG()+BDMG);
+                cardList[2].newDescription(string.Format("Increase the damage of all cards by 1, then deal *{0}* damage", cardList[2].giveDMG()+BDMG));
+                cardList[2].newDMG(cardList[2].giveDMG()+BDMG);
+                cardList[3].newDescription(string.Format("Deal *{0}* damage two times", cardList[3].giveDMG()+BDMG));
+                cardList[3].newDMG(cardList[3].giveDMG()+BDMG);
+                cardList[5].newDescription(string.Format("Heal *{0}*. Damage altering effects also affects the amount healed by this card", cardList[5].giveDMG()+BDMG));
+                cardList[5].newDMG(cardList[5].giveDMG()+BDMG);
+                cardList[7].newDescription(string.Format("Deal *{0}*, then draw cards and gain mana equal to that ammount", cardList[7].giveDMG()+BDMG));
+                cardList[7].newDMG(cardList[7].giveDMG()+BDMG);
+            }else if(id>0){
+                switch(id){
+                    case 1:
+                    cardList[1].newDescription(string.Format("Deal *{0}* damage", cardList[1].giveDMG()+BDMG));
+                    cardList[1].newDMG(cardList[1].giveDMG()+BDMG);
+                    break;
+                    case 2:
+                    cardList[2].newDescription(string.Format("Increase the damage of all cards by 1, then deal *{0}* damage", cardList[2].giveDMG()+BDMG));
+                    cardList[2].newDMG(cardList[2].giveDMG()+BDMG);
+                    break;
+                    case 3:
+                    cardList[3].newDescription(string.Format("Deal *{0}* damage two times", cardList[3].giveDMG()+BDMG));
+                    cardList[3].newDMG(cardList[3].giveDMG()+BDMG);
+                    break;
+                    case 5:
+                    cardList[5].newDescription(string.Format("Heal *{0}*. Damage altering effects also affects the amount healed by this card", cardList[5].giveDMG()+BDMG));
+                    cardList[5].newDMG(cardList[5].giveDMG()+BDMG);
+                    break;
+                    case 7:
+                    cardList[7].newDescription(string.Format("Deal *{0}*, then draw cards and gain mana equal to that ammount", cardList[7].giveDMG()+BDMG));
+                    cardList[7].newDMG(cardList[7].giveDMG()+BDMG);
+                    break;
+                }
+            }
+        }
+    }
+
     public Cards getCard(int id){
         return cardList[id];
+    }
+
+    void OnDisable(){
+        Events.updateDescEvent -= updateDMGDesc;
     }
 }
