@@ -5,16 +5,17 @@ using UnityEngine.UI;
 
 public class Marker : MonoBehaviour
 {
-    int id;
+    int id, Mpos;
     float time;
     float minX;
     GameObject Target;
     Vector2 AoE;
 
-    public void giveId(int i, int t, GameObject Target, Vector2 TAoE, Color32 c){
+    public void giveId(int i, int pos, int t, GameObject Target, Vector2 TAoE, Color32 c){
         Events.RoundStartEvent += EventRoundStart;
         Events.CardDisableEvent += RemoveMe;
         id = i;
+        Mpos = pos;
         time = (float)t;
         gameObject.transform.GetChild(0).GetComponent<TimeUpdate>().UpdateTime(time);
         this.Target = Target;
@@ -69,7 +70,7 @@ public class Marker : MonoBehaviour
                 break;
                 case 3:
                 Events.giveBDMG(5, 0, Target);
-                Events.AddUnitTime(id, 60);
+                gameObject.transform.parent.GetComponent<RoundSystem>().addEventsTime(Mpos, 60);
                 Events.RoundEnd(id);
                 break;
             }
@@ -78,7 +79,7 @@ public class Marker : MonoBehaviour
 
     void RemoveMe(GameObject Card){
         if(Target == Card){
-            gameObject.transform.parent.GetComponent<RoundSystem>().removeMarker(id);
+            gameObject.transform.parent.GetComponent<RoundSystem>().removeMarker(Mpos);
             Destroy(gameObject);
         }
     }

@@ -52,8 +52,9 @@ public class RoundSystem : MonoBehaviour
         }
         GameObject newEvent = Instantiate(EventPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         Markers.Add(new Event(id, t, newEvent));
+        int pos = Markers.Count - 1;
         newEvent.transform.SetParent(gameObject.transform, false);
-        newEvent.GetComponent<Marker>().giveId(id, t, Target, size, c);
+        newEvent.GetComponent<Marker>().giveId(id, pos, t, Target, size, c);
     }
 
     void Start(){
@@ -104,6 +105,17 @@ public class RoundSystem : MonoBehaviour
         }
     }
 
+    public void addEventsTime(int pos, int t){
+        Markers[pos].addTime(t);
+        for(int i = 0; i < Markers.Count; i++){
+                if((Markers[i].getTime() == Markers[pos].getTime())&&(i != pos)){
+                    print(i);
+                    Markers[pos].addTime(1);
+                    i = -1;
+                }
+            }
+    }
+
     public void EventRoundEnd(int id){
         bool found = false;
         for(int i = 2; (i < Markers.Count) && (found == false); i++){
@@ -115,14 +127,8 @@ public class RoundSystem : MonoBehaviour
         }
     }
 
-    public void removeMarker(int id){
-        bool found = false;
-        for(int i = 2; (i < Markers.Count) && (found == false); i++){
-           if(Markers[i].getId() == id){
-            found = true;
-            Markers.Remove(Markers[i]);
-           }
-        }
+    public void removeMarker(int pos){
+        Markers.Remove(Markers[pos]);
     }
 
     void OnDisable(){
