@@ -70,7 +70,7 @@ public class CardInfo : MonoBehaviour
             baseDamage += BDMG;
             switch (id){
                     case 1:
-                    gameObject.transform.GetChild(1).GetComponent<Text>().text = string.Format("Deal *{0}* damage", baseDamage);
+                    gameObject.transform.GetChild(1).GetComponent<Text>().text = string.Format("GROUND(60):Increase this cards damage by 5\nDeal *{0}* damage", baseDamage);
                     break;
                     case 2:
                     gameObject.transform.GetChild(1).GetComponent<Text>().text = string.Format("Increase the damage of all cards by 1, then deal *{0}* damage", baseDamage);

@@ -52,7 +52,7 @@ public class CardDataBase : MonoBehaviour
     {
         Events.updateDescEvent += updateDMGDesc;
         cardList.Add(new Cards(0, "None", 0, 0, 0, "None", new Vector2(0, 0)));
-        cardList.Add(new Cards(1, "Card1", 45, 1, 5, "Deal 5 damage", new Vector2(0, 3)));
+        cardList.Add(new Cards(1, "Card1", 45, 1, 5, "GROUND(60):Increase this cards damage by 5\nDeal 5 damage", new Vector2(0, 3)));//GROUND(X):the effect takes place once every 60 event seconds
         cardList.Add(new Cards(2, "Card2", 30, 2, 2, "Increase the damage of all cards by 1, then deal 2 damage", new Vector2(3, 3)));
         cardList.Add(new Cards(3, "Card3", 90, 2, 3, "Deal 3 damage two times", new Vector2(0, 3)));
         cardList.Add(new Cards(4, "Card4", 15, 1, 0, "Increase the damage of all cards by 2", new Vector2(3, 3)));
@@ -65,7 +65,7 @@ public class CardDataBase : MonoBehaviour
     public void updateDMGDesc(int BDMG, int id, GameObject Target){
         if(Target == null){
             if(id<0){
-                cardList[1].newDescription(string.Format("Deal *{0}* damage", cardList[1].giveDMG()+BDMG));
+                cardList[1].newDescription(string.Format("GROUND(60):Increase this cards damage by 5\nDeal *{0}* damage", cardList[1].giveDMG()+BDMG));
                 cardList[1].newDMG(cardList[1].giveDMG()+BDMG);
                 cardList[2].newDescription(string.Format("Increase the damage of all cards by 1, then deal *{0}* damage", cardList[2].giveDMG()+BDMG));
                 cardList[2].newDMG(cardList[2].giveDMG()+BDMG);
@@ -78,7 +78,7 @@ public class CardDataBase : MonoBehaviour
             }else if(id>0){
                 switch(id){
                     case 1:
-                    cardList[1].newDescription(string.Format("Deal *{0}* damage", cardList[1].giveDMG()+BDMG));
+                    cardList[1].newDescription(string.Format("GROUND(60):Increase this cards damage by 5\nDeal *{0}* damage", cardList[1].giveDMG()+BDMG));
                     cardList[1].newDMG(cardList[1].giveDMG()+BDMG);
                     break;
                     case 2:

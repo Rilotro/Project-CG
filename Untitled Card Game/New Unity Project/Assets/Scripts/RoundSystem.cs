@@ -94,10 +94,8 @@ public class RoundSystem : MonoBehaviour
             }
         }
         if(j >= 0){
-            print(Markers[j].getTime());
             for(int i = 0; i < Markers.Count; i++){
                 if((Markers[i].getTime() == Markers[j].getTime())&&(i != j)){
-                    print(i);
                     Markers[j].addTime(1);
                     i = -1;
                 }
@@ -109,7 +107,6 @@ public class RoundSystem : MonoBehaviour
         Markers[pos].addTime(t);
         for(int i = 0; i < Markers.Count; i++){
                 if((Markers[i].getTime() == Markers[pos].getTime())&&(i != pos)){
-                    print(i);
                     Markers[pos].addTime(1);
                     i = -1;
                 }
@@ -121,14 +118,17 @@ public class RoundSystem : MonoBehaviour
         for(int i = 2; (i < Markers.Count) && (found == false); i++){
             if((Markers[i].getId() == id)&&(Markers[i].getTime() == 0)){
                 found = true;
-                Markers.Remove(Markers[i]);
-                Destroy(gameObject.transform.GetChild(i).gameObject);
+                removeMarker(i);
             }
         }
     }
 
     public void removeMarker(int pos){
+        for(int i = (pos+1); i < Markers.Count; i++){
+            gameObject.transform.GetChild(i).GetComponent<Marker>().MarkerRemoved();
+        }
         Markers.Remove(Markers[pos]);
+        Destroy(gameObject.transform.GetChild(pos).gameObject);
     }
 
     void OnDisable(){

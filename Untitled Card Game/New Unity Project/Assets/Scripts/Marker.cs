@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Marker : MonoBehaviour
 {
-    int id, Mpos;
+    int id;
+    public int Mpos;
     float time;
     float minX;
     GameObject Target;
@@ -77,10 +78,14 @@ public class Marker : MonoBehaviour
         }
     }
 
+    public void MarkerRemoved(){
+        Mpos--;
+        print(Mpos);
+    }
+
     void RemoveMe(GameObject Card){
         if(Target == Card){
             gameObject.transform.parent.GetComponent<RoundSystem>().removeMarker(Mpos);
-            Destroy(gameObject);
         }
     }
 
