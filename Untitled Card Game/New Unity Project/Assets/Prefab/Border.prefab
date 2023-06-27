@@ -148,6 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
+  baseColor:
+    serializedVersion: 2
+    rgba: 0
 --- !u!114 &8802749799314647812
 MonoBehaviour:
   m_ObjectHideFlags: 0

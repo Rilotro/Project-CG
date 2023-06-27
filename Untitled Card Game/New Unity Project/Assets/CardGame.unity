@@ -254,7 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e6a8006f1d4d5489c45671e602e293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHand: {fileID: 260396318}
   PlayerHealth: {fileID: 0}
 --- !u!114 &260396323
 MonoBehaviour:
@@ -484,6 +483,18 @@ PrefabInstance:
     - target: {fileID: 5852959210137709194, guid: 768f71d52fb65824384f52a34a643a4c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852959210137709205, guid: 768f71d52fb65824384f52a34a643a4c, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852959210137709205, guid: 768f71d52fb65824384f52a34a643a4c, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852959210137709205, guid: 768f71d52fb65824384f52a34a643a4c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5852959210147665796, guid: 768f71d52fb65824384f52a34a643a4c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1501,6 +1512,18 @@ PrefabInstance:
     - target: {fileID: 5852959210137709194, guid: 768f71d52fb65824384f52a34a643a4c, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852959210137709205, guid: 768f71d52fb65824384f52a34a643a4c, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852959210137709205, guid: 768f71d52fb65824384f52a34a643a4c, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852959210137709205, guid: 768f71d52fb65824384f52a34a643a4c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5852959210147665796, guid: 768f71d52fb65824384f52a34a643a4c, type: 3}
       propertyPath: m_AnchorMax.x

@@ -10,6 +10,7 @@ public class TileEffects : MonoBehaviour
     public static GameObject Player = null;
     Vector2 TAoE = new Vector2(-1, -1);
     public Color32 baseColor;
+    bool OnFire = false;
 
     void Awake()
     {
@@ -29,11 +30,39 @@ public class TileEffects : MonoBehaviour
 
     public void EffectDMG(int DMG, GameObject Tile){
         if(gameObject == Tile){
-            for(int i = 1; i < gameObject.transform.parent.childCount; i++){
-                gameObject.transform.parent.GetChild(i).GetComponent<UnitScript>().TakeDMG(DMG);
+            for(int i = 0; i < gameObject.transform.parent.childCount; i++){
+                if(gameObject.transform.parent.GetChild(i).GetComponent<UnitScript>() != null){
+                    gameObject.transform.parent.GetChild(i).GetComponent<UnitScript>().TakeDMG(DMG);
+                }
             }
         }
     }
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------
+    //Fire Effect
+
+    void GetFired(){
+        OnFire = true;
+        gameObject.transform.parent.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+    }
+
+    void FireEffect(){
+        if(OnFire){
+            for(int i = 0; i < gameObject.transform.parent.childCount; i++){
+                if(gameObject.transform.parent.GetChild(i).GetComponent<UnitScript>() != null){
+                    gameObject.transform.parent.GetChild(i).GetComponent<UnitScript>().TakeDMG(10);
+                }
+            }
+        }
+    }
+
+    void PutOut(){
+        OnFire = false;
+        gameObject.transform.parent.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
+    }
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------
+    //Visuals
 
     void Recolored(Color32 c){
         if(c.a != 0){
