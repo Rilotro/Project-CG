@@ -37,13 +37,13 @@ public class Health : MonoBehaviour
         currentHP = maxHP;;
     }
     void Start(){
-        Events.DealDMGEvent += DealDMG;
+        //Events.DealDMGEvent += DealDMG;
         UpdateHealthBar.Invoke(currentHP, maxHP);
     }
 
-    void OnDisable(){
+    /*void OnDisable(){
         Events.DealDMGEvent -= DealDMG;
-    }
+    }*/
 }
 
 [System.Serializable]

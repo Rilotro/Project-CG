@@ -99,10 +99,31 @@ public class EffectDataBase : MonoBehaviour
         }
     }
 
-    void Effect4(){
+    void Effect4(GameObject Target, Vector2 TAoE){
         BonusDMG += 2;
         Events.giveBDMG(2, -1, null);
+        Vector2 pos = Target.GetComponent<TileEffects>().pos;
+        if((TAoE.x < 0)&&(TAoE.y < 0)){
+            Target.transform.GetComponent<TileEffects>().GetIgnited();
+        }else if(TAoE.x == 0){
+            for(int i = (int)pos.y; (i < (int)pos.y+(int)TAoE.y)&&(i < 8); i++){
+                Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).GetComponent<TileEffects>().GetIgnited();
+            }
+        }else if((TAoE.x != 0)&&(TAoE.y != 0)){
+            for(int i = (int)pos.x - ((int)TAoE.x-1)/2; (i <= (int)pos.x + ((int)TAoE.x-1)/2)&&(i < 4); i++){
+                if(i < 0){
+                    i = 0;
+                }
+                for(int j = (int)pos.y - ((int)TAoE.y-1)/2; (j <= (int)pos.y + ((int)TAoE.y-1)/2)&&(j < 8); j++){
+                    if(j < 0){
+                        j = 0;
+                    }
+                    Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).GetComponent<TileEffects>().GetIgnited();
+                }
+            }
+        }
     }
+
     void Effect5(GameObject Target, Vector2 TAoE, int bDMG){
         Vector2 pos = Target.GetComponent<TileEffects>().pos;
         if((TAoE.x < 0)&&(TAoE.y < 0)){
@@ -189,7 +210,7 @@ public class EffectDataBase : MonoBehaviour
             Effect3(Target, Card.transform.GetComponent<CardInfo>().getAoE(), Card.transform.GetComponent<CardInfo>().getDMG());
             break;
             case 4:
-            Effect4();
+            Effect4(Target, Card.transform.GetComponent<CardInfo>().getAoE());
             break;
             case 5:
             Effect5(Target, Card.transform.GetComponent<CardInfo>().getAoE(), Card.transform.GetComponent<CardInfo>().getDMG());
