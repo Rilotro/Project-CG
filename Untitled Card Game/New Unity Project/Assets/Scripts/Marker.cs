@@ -14,7 +14,7 @@ public class Marker : MonoBehaviour
 
     public void giveId(int i, int pos, int t, GameObject Target, Vector2 TAoE, Color32 c){
         Events.RoundStartEvent += EventRoundStart;
-        Events.CardDisableEvent += RemoveMe;
+        Events.UngroundCard += RemoveMe;
         id = i;
         Mpos = pos;
         time = (float)t;
@@ -74,6 +74,15 @@ public class Marker : MonoBehaviour
                 gameObject.transform.parent.GetComponent<RoundSystem>().addEventsTime(Mpos, 60);
                 Events.RoundEnd(id);
                 break;
+                case 4:
+                for(int i = 0; i < 4; i++){
+                    for(int j = 0; j < 8; j++){
+                        Target.transform.parent.parent.GetChild(i*8+j).GetChild(0).GetComponent<TileEffects>().FireEffect();
+                    }
+                }
+                gameObject.transform.parent.GetComponent<RoundSystem>().addEventsTime(Mpos, 30);
+                Events.RoundEnd(id);
+                break;
             }
         }
     }
@@ -84,13 +93,17 @@ public class Marker : MonoBehaviour
     }
 
     void RemoveMe(GameObject Card){
-        if(Target == Card){
+        if(Card.transform.GetComponent<CardInfo>() != null){
+            if(Target == Card){
+                gameObject.transform.parent.GetComponent<RoundSystem>().removeMarker(Mpos);
+            }
+        }else if(Card.transform.GetComponent<TileEffects>() != null){
             gameObject.transform.parent.GetComponent<RoundSystem>().removeMarker(Mpos);
         }
     }
 
     void OnDisable(){
         Events.RoundStartEvent -= EventRoundStart;
-        Events.CardDisableEvent -= RemoveMe;
+        Events.UngroundCard -= RemoveMe;
     }
 }

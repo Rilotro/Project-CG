@@ -11,6 +11,7 @@ public class TileEffects : MonoBehaviour
     Vector2 TAoE = new Vector2(-1, -1);
     public Color32 baseColor;
     int FireCount = 0;
+    static bool FireExists = false;
 
     void Awake()
     {
@@ -42,13 +43,17 @@ public class TileEffects : MonoBehaviour
     //Fire Effect
 
     public void GetIgnited(){
+        if(FireExists == false){
+            FireExists = true;
+            Events.addEvent(4, 30, gameObject, new Vector2(0, 0), new Color32(0, 0, 0, 0));
+        }
         if(FireCount == 0){
             gameObject.transform.parent.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
         }
         FireCount = 3;
     }
 
-    void FireEffect(){
+    public void FireEffect(){
         if(FireCount > 0){
             FireCount--;
             for(int i = 0; i < gameObject.transform.parent.childCount; i++){
@@ -65,6 +70,22 @@ public class TileEffects : MonoBehaviour
     void PutOut(){
         FireCount = 0;
         gameObject.transform.parent.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
+        int c = 0;
+        for(int i = 0; i < 4; i++){
+            for(int j = 0; j < 8; j++){
+                if(gameObject.transform.parent.parent.GetChild(i*8+j).GetChild(0).GetComponent<TileEffects>().getFireCount() > 0){
+                    c++;
+                }
+            }
+        }
+        if(c == 0){
+            FireExists = false;
+            Events.Ungrounded(gameObject);
+        }
+    }
+
+    public int getFireCount(){
+        return FireCount;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------

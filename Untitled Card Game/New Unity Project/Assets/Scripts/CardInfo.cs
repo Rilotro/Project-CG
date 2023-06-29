@@ -28,9 +28,6 @@ public class CardInfo : MonoBehaviour
         AoE = gameObject.transform.parent.GetComponent<CardDataBase>().cardList[newId].giveAoE();
         baseDamage = gameObject.transform.parent.GetComponent<CardDataBase>().cardList[newId].giveDMG();
         assignInfo();
-        if(id == 1){
-            gameObject.transform.parent.GetComponent<EffectDataBase>().Ground(id, gameObject);
-        }
     }
 
     public int getId(){
@@ -95,9 +92,15 @@ public class CardInfo : MonoBehaviour
             if(grounded == false){
                 grounded = true;
                 gameObject.transform.GetComponent<Image>().color = new Color32(50, 25, 0, 255);
+                if(id == 1){
+                    Events.addEvent(3, 60, gameObject, new Vector2(-1, -1), new Color32(255, 255, 255, 0));
+                }
             }else{
                 grounded = false;
                 gameObject.transform.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                if(id == 1){
+                    Events.Ungrounded(gameObject);
+                }
             }
         }
     }
@@ -110,6 +113,7 @@ public class CardInfo : MonoBehaviour
     }
 
     void OnDisable(){
+        Events.Ungrounded(gameObject);
         Events.onCardDisable(gameObject);
         Events.RoundEndEvent -= DestroyMe;
         Events.updateDescEvent -= updateDesc;

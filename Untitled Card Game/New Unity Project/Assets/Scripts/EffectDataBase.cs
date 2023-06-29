@@ -229,10 +229,6 @@ public class EffectDataBase : MonoBehaviour
 
     //------------------------------------------------------------------------------------------------------------------------------------------
 
-    public void Ground(int id, GameObject Card){
-        Events.addEvent(3, 60, Card, new Vector2(-1, -1), new Color32(255, 255, 255, 0));
-    }
-
     public int getBonusDMG(){
         return BonusDMG;
     }

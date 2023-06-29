@@ -23,6 +23,7 @@ public class Events : MonoBehaviour
     public static event Action<Vector2> giveTilesAoE;//TileEffects - getAoE;
     public static event Action<int, int, GameObject> updateDescEvent;//CardInfo - updateDesc, CardDataBase - updateDMGDesc;
     public static event Action<GameObject> CardDisableEvent;//Marker - RemoveMe, DrawCards - CardDestroyed;
+    public static event Action<GameObject> UngroundCard;//Marker - RemoveMe;
 
     static float wait = -1;
     static bool resumed = true;
@@ -87,6 +88,10 @@ public class Events : MonoBehaviour
 
     public static void onCardDisable(GameObject Card){//CardInfo - OnDisable;
         CardDisableEvent?.Invoke(Card);
+    }
+
+    public static void Ungrounded(GameObject Card){//CardInfo - Ground - OnDisable;
+        UngroundCard?.Invoke(Card);
     }
 
     public static void RoundEnd(int id){//EndRound - EndonClick, EnemyAI - RoundStart, Marker - EventRoundStart;
