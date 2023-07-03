@@ -11,7 +11,7 @@ public class TileEffects : MonoBehaviour
     Vector2 TAoE = new Vector2(-1, -1);
     public Color32 baseColor;
     int FireCount = 0;
-    static bool FireExists = false;
+    public static bool FireExists = false;
 
     void Awake()
     {

@@ -11,20 +11,24 @@ public class DrawCards : MonoBehaviour
     public GameObject PlayerHand;
     public GameObject DeckOverlay;
     GameObject DO;
-    public int Id;
+    public int DeckCardCount = 0;
     public int CardCount = 0;
 
-    List<GameObject> cards = new List<GameObject>();
+    //List<GameObject> cards = new List<GameObject>();
+    public List<int> DeckCards = new List<int>();
 
     void Awake(){
         PlayerHand = GameObject.Find("PlayerHand");
         Events.DrawCardsEvent += DrawC;
         Events.CardDisableEvent += cardDestroyed;
+        for(int i = 0; i<40; i++){
+            DeckCards.Add(Random.Range(1, 9));
+        }
     }
 
     void Start()
     {
-        cards.Add(Card);
+        //cards.Add(Card);
     }
 
     public void DrawC(int c)
@@ -32,11 +36,11 @@ public class DrawCards : MonoBehaviour
 
         for (var i = 0; i < c; i++)
         {
-            Id = Random.Range(1, 9);
             GameObject playerCard = Instantiate(Card, new Vector3(60, 87, 0), Quaternion.identity);
             playerCard.transform.SetParent(PlayerHand.transform, false);
-            playerCard.GetComponent<CardInfo>().Give(Id);
+            playerCard.GetComponent<CardInfo>().Give(DeckCards[DeckCardCount]);
             CardCount++;
+            DeckCardCount++;
         }
     }
     public int getCardCount(){

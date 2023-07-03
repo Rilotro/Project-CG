@@ -344,6 +344,7 @@
 "Assets/Scripts/CreateMana.cs"
 "Assets/Scripts/DealDamage.cs"
 "Assets/Scripts/DeckList.cs"
+"Assets/Scripts/DeckScript.cs"
 "Assets/Scripts/DragnDrop.cs"
 "Assets/Scripts/DrawCards.cs"
 "Assets/Scripts/EffectDataBase.cs"

@@ -50,9 +50,11 @@ public class Marker : MonoBehaviour
                 Vector2 pos = Target.transform.GetComponent<TileEffects>().pos;
                 if((AoE.x < 0)&&(AoE.y < 0)){
                     Events.DealDMG(10, Target);
+                    Target.transform.GetComponent<TileEffects>().GetIgnited();
                 }else if(AoE.x == 0){
                     for(int i = (int)pos.y; (i < (int)pos.y+(int)AoE.y)&&(i < 8); i++){
                         Events.DealDMG(10, Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
+                        Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).GetComponent<TileEffects>().GetIgnited();
                     }
                 }else if((AoE.x != 0)&&(AoE.y != 0)){
                     for(int i = (int)pos.x - ((int)AoE.x-1)/2; (i <= (int)pos.x + ((int)AoE.x-1)/2)&&(i < 4); i++){
@@ -64,6 +66,7 @@ public class Marker : MonoBehaviour
                                 j = 0;
                             }
                             Events.DealDMG(10, Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
+                            Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).GetComponent<TileEffects>().GetIgnited();
                         }
                     }
                 }
@@ -80,7 +83,9 @@ public class Marker : MonoBehaviour
                         Target.transform.parent.parent.GetChild(i*8+j).GetChild(0).GetComponent<TileEffects>().FireEffect();
                     }
                 }
-                gameObject.transform.parent.GetComponent<RoundSystem>().addEventsTime(Mpos, 30);
+                if(TileEffects.FireExists == true){
+                    gameObject.transform.parent.GetComponent<RoundSystem>().addEventsTime(Mpos, 30);
+                }
                 Events.RoundEnd(id);
                 break;
             }
@@ -97,7 +102,7 @@ public class Marker : MonoBehaviour
             if(Target == Card){
                 gameObject.transform.parent.GetComponent<RoundSystem>().removeMarker(Mpos);
             }
-        }else if(Card.transform.GetComponent<TileEffects>() != null){
+        }else if((Card.transform.GetComponent<TileEffects>() != null)&&(id == 4)){
             gameObject.transform.parent.GetComponent<RoundSystem>().removeMarker(Mpos);
         }
     }
