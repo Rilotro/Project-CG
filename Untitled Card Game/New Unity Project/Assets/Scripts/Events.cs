@@ -6,7 +6,7 @@ using System;
 
 public class Events : MonoBehaviour
 {
-    public static event Action<int> DrawCardsEvent;//DrawCards - DrawC;
+    public static event Action<int> DrawCardsEvent;//CardDataBase - createCard;
     public static event Action<int, GameObject> DealDMGEvent;//Health - DealDMG TileEffects - EffectDMG;
     public static event Action<GameObject, GameObject> CastEvent;//EffectDataBase - Cast;
     public static event Action<int, int> AddUnitTimeEvent;//RoundSystem - addUnitTime;

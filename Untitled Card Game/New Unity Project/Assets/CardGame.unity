@@ -347,6 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b02d7b6e719fb44942d6aa59ed3704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Card: {fileID: 5468752181724929636, guid: 25da06c8c3881a841ad707c21cff912a, type: 3}
 --- !u!1 &357590944
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,8 +608,6 @@ GameObject:
   - component: {fileID: 731446065}
   - component: {fileID: 731446064}
   - component: {fileID: 731446072}
-  - component: {fileID: 731446073}
-  - component: {fileID: 731446075}
   - component: {fileID: 731446076}
   m_Layer: 5
   m_Name: Main Canvas
@@ -719,52 +718,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mana: {fileID: 6343994031782524696, guid: f23eb5b843672ea4180c36935b83dc09, type: 3}
---- !u!114 &731446073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731446063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a943a853da9f3fe43bea510114b76591, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Card: {fileID: 5468752181724929636, guid: 25da06c8c3881a841ad707c21cff912a, type: 3}
-  PlayerHand: {fileID: 0}
-  DeckOverlay: {fileID: 8118799708650570585, guid: b9d7698f561fd7545aec278851f90447, type: 3}
-  Id: 0
-  CardCount: 0
---- !u!114 &731446075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731446063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 731446076}
-          m_TargetAssemblyTypeName: Modes, Assembly-CSharp
-          m_MethodName: onClick
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &731446076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,6 +743,7 @@ GameObject:
   - component: {fileID: 800362432}
   - component: {fileID: 800362431}
   - component: {fileID: 800362430}
+  - component: {fileID: 800362434}
   m_Layer: 5
   m_Name: Deck
   m_TagString: Untagged
@@ -830,7 +784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efce0b5424c8bf945be34c103060645c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeckCards: 
+  DeckOverlay: {fileID: 8118799708650570585, guid: b9d7698f561fd7545aec278851f90447, type: 3}
 --- !u!114 &800362431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,7 +828,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 800362432}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 800362430}
+        m_TargetAssemblyTypeName: DeckScript, Assembly-CSharp
+        m_MethodName: onClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
 --- !u!114 &800362432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,6 +879,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800362428}
   m_CullTransparentMesh: 1
+--- !u!114 &800362434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800362428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 800362430}
+          m_TargetAssemblyTypeName: DeckScript, Assembly-CSharp
+          m_MethodName: onClick
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &894925073 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5852959209743129962, guid: 768f71d52fb65824384f52a34a643a4c, type: 3}

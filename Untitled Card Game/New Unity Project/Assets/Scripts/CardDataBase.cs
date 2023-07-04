@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CardDataBase : MonoBehaviour
 {
+
+    public GameObject Card;
+
     public class Cards{
         int id, time, mana, damage;
         string cname, description;
@@ -51,6 +54,7 @@ public class CardDataBase : MonoBehaviour
     void Awake ()
     {
         Events.updateDescEvent += updateDMGDesc;
+        Events.DrawCardsEvent += createCard;
         cardList.Add(new Cards(0, "None", 0, 0, 0, "None", new Vector2(0, 0)));
         cardList.Add(new Cards(1, "Card1", 45, 1, 5, "GROUND(60):Increase this cards damage by 5\nDeal 5 damage", new Vector2(0, 3)));//GROUND(X):the effect takes place once every 60 event seconds.
         cardList.Add(new Cards(2, "Card2", 30, 2, 2, "Increase the damage of all cards by 1, then deal 2 damage", new Vector2(3, 3)));
@@ -102,11 +106,23 @@ public class CardDataBase : MonoBehaviour
         }
     }
 
+    void createCard(int c){
+        int index;
+        for(int i = 0; i < c; i++){
+            index = Random.Range(0, DeckScript.DeckCards.Count);
+            GameObject playerCard = Instantiate(Card, new Vector3(60, 87, 0), Quaternion.identity);
+            playerCard.transform.SetParent(gameObject.transform, false);
+            playerCard.GetComponent<CardInfo>().Give(DeckScript.DeckCards[index]);
+            DeckScript.DeckCards.Remove(DeckScript.DeckCards[index]);
+        }
+    }
+
     public Cards getCard(int id){
         return cardList[id];
     }
 
     void OnDisable(){
         Events.updateDescEvent -= updateDMGDesc;
+        Events.DrawCardsEvent -= createCard;
     }
 }

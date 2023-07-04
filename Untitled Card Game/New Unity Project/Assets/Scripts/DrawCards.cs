@@ -19,7 +19,6 @@ public class DrawCards : MonoBehaviour
 
     void Awake(){
         PlayerHand = GameObject.Find("PlayerHand");
-        Events.DrawCardsEvent += DrawC;
         Events.CardDisableEvent += cardDestroyed;
         for(int i = 0; i<40; i++){
             DeckCards.Add(Random.Range(1, 9));
@@ -63,7 +62,6 @@ public class DrawCards : MonoBehaviour
     }
 
     void OnDisable(){
-        Events.DrawCardsEvent -= DrawC;
         Events.CardDisableEvent -= cardDestroyed;
     }
 }

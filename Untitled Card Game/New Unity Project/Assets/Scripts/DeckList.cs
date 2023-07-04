@@ -16,6 +16,4 @@ public class DeckList : MonoBehaviour
             playerCard.GetComponent<CardInfo>().Give(i);
         }
     }
-
-    // Update is called once per frame
 }
