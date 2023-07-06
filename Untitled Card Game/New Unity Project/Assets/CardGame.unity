@@ -348,6 +348,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card: {fileID: 5468752181724929636, guid: 25da06c8c3881a841ad707c21cff912a, type: 3}
+--- !u!114 &260396327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260396318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a943a853da9f3fe43bea510114b76591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &357590944
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,7 +781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -188.1, y: -116.5}
+  m_AnchoredPosition: {x: -188, y: -116}
   m_SizeDelta: {x: 60, y: 87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &800362430
@@ -784,6 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efce0b5424c8bf945be34c103060645c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Card: {fileID: 5468752181724929636, guid: 25da06c8c3881a841ad707c21cff912a, type: 3}
   DeckOverlay: {fileID: 8118799708650570585, guid: b9d7698f561fd7545aec278851f90447, type: 3}
 --- !u!114 &800362431
 MonoBehaviour:

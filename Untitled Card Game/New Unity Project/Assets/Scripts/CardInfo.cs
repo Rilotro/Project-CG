@@ -105,9 +105,8 @@ public class CardInfo : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void DestroyMe(int id){
-        if((id == 0)&&(grounded == false)){
+        if((id == 0)&&(grounded == false)&&(gameObject.transform.parent.name == "PlayerHand")){
             Destroy(gameObject);
         }
     }

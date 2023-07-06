@@ -6,7 +6,7 @@ using System;
 
 public class Events : MonoBehaviour
 {
-    public static event Action<int> DrawCardsEvent;//CardDataBase - createCard;
+    public static event Action<int> DrawCardsEvent;//DrawCards - DrawC;
     public static event Action<int, GameObject> DealDMGEvent;//Health - DealDMG TileEffects - EffectDMG;
     public static event Action<GameObject, GameObject> CastEvent;//EffectDataBase - Cast;
     public static event Action<int, int> AddUnitTimeEvent;//RoundSystem - addUnitTime;
@@ -22,7 +22,7 @@ public class Events : MonoBehaviour
     public static event Action<Color32> RecolorTiles;//TileEffects - Recolored;
     public static event Action<Vector2> giveTilesAoE;//TileEffects - getAoE;
     public static event Action<int, int, GameObject> updateDescEvent;//CardInfo - updateDesc, CardDataBase - updateDMGDesc;
-    public static event Action<GameObject> CardDisableEvent;//Marker - RemoveMe, DrawCards - CardDestroyed;
+    public static event Action<GameObject> CardDisableEvent;//Marker - RemoveMe;
     public static event Action<GameObject> UngroundCard;//Marker - RemoveMe;
 
     static float wait = -1;

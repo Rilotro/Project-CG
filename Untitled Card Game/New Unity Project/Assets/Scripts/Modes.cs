@@ -8,7 +8,7 @@ public class Modes : MonoBehaviour
     void Update(){
         if(Input.GetMouseButtonDown(1)){
             print("clicked");
-            Destroy(DeckScript.DO);
+            DeckScript.DO.transform.SetSiblingIndex(0);
             Events.Recolor(new Color32(255, 255, 255, 0));
             DragnDrop.active = null;
             TileEffects.Player = null;
