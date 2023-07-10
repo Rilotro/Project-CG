@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 827098682764841964}
   - component: {fileID: 827098682764841966}
   - component: {fileID: 827098682764841965}
-  - component: {fileID: 9182327893537283246}
   - component: {fileID: -6701382648631665257}
   - component: {fileID: 6338051306613985054}
   m_Layer: 5
@@ -79,19 +78,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9182327893537283246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8118799708650570585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 521a5b0e1ec9e954198cc41c4ce9b7e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Card: {fileID: 5468752181724929636, guid: 25da06c8c3881a841ad707c21cff912a, type: 3}
 --- !u!114 &-6701382648631665257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b02d7b6e719fb44942d6aa59ed3704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Card: {fileID: 0}
 --- !u!114 &6338051306613985054
 MonoBehaviour:
   m_ObjectHideFlags: 0

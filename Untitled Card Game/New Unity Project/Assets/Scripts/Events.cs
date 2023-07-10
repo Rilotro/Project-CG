@@ -24,6 +24,7 @@ public class Events : MonoBehaviour
     public static event Action<int, int, GameObject> updateDescEvent;//CardInfo - updateDesc, CardDataBase - updateDMGDesc;
     public static event Action<GameObject> CardDisableEvent;//Marker - RemoveMe;
     public static event Action<GameObject> UngroundCard;//Marker - RemoveMe;
+    public static event Action<GameObject> Discarded;//DiscardScript - Discard;
 
     static float wait = -1;
     static bool resumed = true;
@@ -92,6 +93,10 @@ public class Events : MonoBehaviour
 
     public static void Ungrounded(GameObject Card){//CardInfo - Ground - OnDisable;
         UngroundCard?.Invoke(Card);
+    }
+
+    public static void Discard(GameObject Card){//DragnDrop - Activated, CardInfo - Destroyme;
+        Discarded?.Invoke(Card);
     }
 
     public static void RoundEnd(int id){//EndRound - EndonClick, EnemyAI - RoundStart, Marker - EventRoundStart;

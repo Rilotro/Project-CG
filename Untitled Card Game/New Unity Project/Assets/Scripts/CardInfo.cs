@@ -107,7 +107,7 @@ public class CardInfo : MonoBehaviour
 
     void DestroyMe(int id){
         if((id == 0)&&(grounded == false)&&(gameObject.transform.parent.name == "PlayerHand")){
-            Destroy(gameObject);
+            Events.Discard(gameObject);
         }
     }
 

@@ -8,7 +8,7 @@ public class DeckScript : MonoBehaviour
 {
     public GameObject Card;
     static public List<GameObject> DeckCards = new List<GameObject>();
-    static public GameObject DO;
+    public GameObject DO;
     public GameObject DeckOverlay;
 
     void Awake(){
@@ -16,6 +16,7 @@ public class DeckScript : MonoBehaviour
         DO.transform.SetParent(gameObject.transform.parent, false);
         DO.transform.localPosition = new Vector3(0, 0, 0);
         DO.transform.SetSiblingIndex(0);
+        DO.name = "DeckOverlay";
         GameObject tempCard;
         for(int i = 0; i<40; i++){
             tempCard = Instantiate(Card, new Vector3(-500, 0, 0), Quaternion.identity);
@@ -27,7 +28,7 @@ public class DeckScript : MonoBehaviour
 
     public void onClick(BaseEventData data){
         PointerEventData Pdata = (PointerEventData)data;
-        if((Pdata.pointerId == -1)&&(DO.transform.GetSiblingIndex() == 0)){
+        if((Pdata.pointerId == -1)&&(DO.transform.GetSiblingIndex() <= 1)){
             DO.transform.SetSiblingIndex(gameObject.transform.parent.childCount-1);
         }
         
