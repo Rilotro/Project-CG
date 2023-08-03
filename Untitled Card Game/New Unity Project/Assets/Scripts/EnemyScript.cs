@@ -32,19 +32,19 @@ public class EnemyScript : UnitScript
                 if((TAoE.x < 0)&&(TAoE.y < 0)){
                     Events.DealDMG(10, PlayerTile.transform.GetChild(0).gameObject);
                 }else if(TAoE.x == 0){
-                    for(int i = (int)PlayerPos.y; (i < (int)PlayerPos.y+(int)TAoE.y)&&(i < 8); i++){
-                        Events.DealDMG(10, PlayerTile.transform.parent.GetChild((int)PlayerPos.x*8+i).GetChild(0).gameObject);
+                    for(int i = (int)PlayerPos.y; (i < (int)PlayerPos.y+(int)TAoE.y)&&(i < 11); i++){
+                        Events.DealDMG(10, PlayerTile.transform.parent.GetChild((int)PlayerPos.x*11+i).GetChild(0).gameObject);
                     }
                 }else if((TAoE.x != 0)&&(TAoE.y != 0)){
-                    for(int i = (int)PlayerPos.x - ((int)TAoE.x-1)/2; (i <= (int)PlayerPos.x + ((int)TAoE.x-1)/2)&&(i < 4); i++){
+                    for(int i = (int)PlayerPos.x - ((int)TAoE.x-1)/2; (i <= (int)PlayerPos.x + ((int)TAoE.x-1)/2)&&(i < 7); i++){
                         if(i < 0){
                             i = 0;
                         }
-                        for(int j = (int)PlayerPos.y - ((int)TAoE.y-1)/2; (j <= (int)PlayerPos.y + ((int)TAoE.y-1)/2)&&(j < 8); j++){
+                        for(int j = (int)PlayerPos.y - ((int)TAoE.y-1)/2; (j <= (int)PlayerPos.y + ((int)TAoE.y-1)/2)&&(j < 11); j++){
                             if(j < 0){
                                 j = 0;
                             }
-                            Events.DealDMG(10, PlayerTile.transform.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
+                            Events.DealDMG(10, PlayerTile.transform.parent.GetChild((int)i*11+j).GetChild(0).gameObject);
                         }
                     }
                 }
@@ -55,19 +55,19 @@ public class EnemyScript : UnitScript
                 if((TAoE.x < 0)&&(TAoE.y < 0)){
                     Events.DealDMG(15, PlayerTile.transform.GetChild(0).gameObject);
                 }else if(TAoE.x == 0){
-                    for(int i = (int)PlayerPos.y; (i < (int)PlayerPos.y+(int)TAoE.y)&&(i < 8); i++){
-                        Events.DealDMG(15, PlayerTile.transform.parent.GetChild((int)PlayerPos.x*8+i).GetChild(0).gameObject);
+                    for(int i = (int)PlayerPos.y; (i < (int)PlayerPos.y+(int)TAoE.y)&&(i < 11); i++){
+                        Events.DealDMG(15, PlayerTile.transform.parent.GetChild((int)PlayerPos.x*11+i).GetChild(0).gameObject);
                     }
                 }else if((TAoE.x != 0)&&(TAoE.y != 0)){
-                    for(int i = (int)PlayerPos.x - ((int)TAoE.x-1)/2; (i <= (int)PlayerPos.x + ((int)TAoE.x-1)/2)&&(i < 4); i++){
+                    for(int i = (int)PlayerPos.x - ((int)TAoE.x-1)/2; (i <= (int)PlayerPos.x + ((int)TAoE.x-1)/2)&&(i < 7); i++){
                         if(i < 0){
                             i = 0;
                         }
-                        for(int j = (int)PlayerPos.y - ((int)TAoE.y-1)/2; (j <= (int)PlayerPos.y + ((int)TAoE.y-1)/2)&&(j < 8); j++){
+                        for(int j = (int)PlayerPos.y - ((int)TAoE.y-1)/2; (j <= (int)PlayerPos.y + ((int)TAoE.y-1)/2)&&(j < 11); j++){
                             if(j < 0){
                                 j = 0;
                             }
-                            Events.DealDMG(15, PlayerTile.transform.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
+                            Events.DealDMG(15, PlayerTile.transform.parent.GetChild((int)i*11+j).GetChild(0).gameObject);
                         }
                     }
                 }
@@ -101,21 +101,21 @@ public class EnemyScript : UnitScript
                 PlayerTile.transform.GetChild(0).GetComponent<Image>().color = newC;
                 PlayerTile.transform.GetChild(0).GetComponent<TileEffects>().baseColor = newC;
             }else if(TAoE.x == 0){
-                for(int i = (int)PlayerPos.y; (i < (int)PlayerPos.y+(int)TAoE.y)&&(i < 8); i++){
-                    PlayerTile.transform.parent.GetChild((int)PlayerPos.x*8+i).GetChild(0).GetComponent<Image>().color = newC;
-                    PlayerTile.transform.parent.GetChild((int)PlayerPos.x*8+i).GetChild(0).GetComponent<TileEffects>().baseColor = newC;
+                for(int i = (int)PlayerPos.y; (i < (int)PlayerPos.y+(int)TAoE.y)&&(i < 11); i++){
+                    PlayerTile.transform.parent.GetChild((int)PlayerPos.x*11+i).GetChild(0).GetComponent<Image>().color = newC;
+                    PlayerTile.transform.parent.GetChild((int)PlayerPos.x*11+i).GetChild(0).GetComponent<TileEffects>().baseColor = newC;
                 }
             }else if((TAoE.x != 0)&&(TAoE.y != 0)){
-                for(int i = (int)PlayerPos.x - ((int)TAoE.x-1)/2; (i <= (int)PlayerPos.x + ((int)TAoE.x-1)/2)&&(i < 4); i++){
+                for(int i = (int)PlayerPos.x - ((int)TAoE.x-1)/2; (i <= (int)PlayerPos.x + ((int)TAoE.x-1)/2)&&(i < 7); i++){
                     if(i < 0){
                         i = 0;
                     }
-                    for(int j = (int)PlayerPos.y - ((int)TAoE.y-1)/2; (j <= (int)PlayerPos.y + ((int)TAoE.y-1)/2)&&(j < 8); j++){
+                    for(int j = (int)PlayerPos.y - ((int)TAoE.y-1)/2; (j <= (int)PlayerPos.y + ((int)TAoE.y-1)/2)&&(j < 11); j++){
                         if(j < 0){
                             j = 0;
                         }
-                        PlayerTile.transform.parent.GetChild((int)i*8+j).GetChild(0).GetComponent<Image>().color = newC;
-                        PlayerTile.transform.parent.GetChild((int)i*8+j).GetChild(0).GetComponent<TileEffects>().baseColor = newC;
+                        PlayerTile.transform.parent.GetChild((int)i*11+j).GetChild(0).GetComponent<Image>().color = newC;
+                        PlayerTile.transform.parent.GetChild((int)i*11+j).GetChild(0).GetComponent<TileEffects>().baseColor = newC;
                     }
                 }
             }
@@ -163,8 +163,8 @@ public class EnemyScript : UnitScript
                     }
                 }
             }
-            PlayerTile.transform.parent.GetChild((int)x*8+(int)y).GetChild(0).GetComponent<Image>().color = newC;
-            PlayerTile.transform.parent.GetChild((int)x*8+(int)y).GetChild(0).GetComponent<TileEffects>().baseColor = newC;
+            PlayerTile.transform.parent.GetChild((int)x*11+(int)y).GetChild(0).GetComponent<Image>().color = newC;
+            PlayerTile.transform.parent.GetChild((int)x*11+(int)y).GetChild(0).GetComponent<TileEffects>().baseColor = newC;
         }
     }
 

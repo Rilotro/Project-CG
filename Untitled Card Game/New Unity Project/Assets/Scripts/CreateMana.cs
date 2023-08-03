@@ -12,10 +12,10 @@ public class CreateMana : MonoBehaviour
     {
         Main_Canvas = GameObject.Find("Main Canvas");
         GameObject newMana = Instantiate(Mana, new Vector3(0, 0, 0), Quaternion.identity);
-        newMana.transform.position = new Vector2(151.5f, 0);
+        newMana.transform.position = new Vector2(211.5f, 0);
         newMana.transform.SetParent(Main_Canvas.transform, false);
         var rect = (RectTransform)newMana.transform;
-        rect.sizeDelta = new Vector2(30, 30);
+        rect.sizeDelta = new Vector2(45, 45);
         newMana.transform.SetSiblingIndex(3);
     }
 

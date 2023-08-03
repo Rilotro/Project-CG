@@ -9,7 +9,8 @@ public class Health : MonoBehaviour
 {
     public float currentHP, maxHP;
     GameObject Target;
-
+    float waitTime = 0f;
+    public GameObject GO;
     public UnityDMGEvent UpdateHealthBar;
 
     
@@ -26,6 +27,14 @@ public class Health : MonoBehaviour
             }else if(currentHP != 0){
                 currentHP = 0;
                 UpdateHealthBar.Invoke(currentHP, maxHP);
+                GameObject Overlay = Instantiate(GO, new Vector3(0, 0, 0), Quaternion.identity);
+                Overlay.transform.SetParent(gameObject.transform.parent.parent.parent.parent, false);
+                if(gameObject.transform.parent.name == "Player"){
+                    Overlay.transform.GetComponent<GOScript>().GameOver(0);
+                }else{
+                    Overlay.transform.GetComponent<GOScript>().GameOver(1);
+                }
+                waitTime = 2f;
             }
         }
 
@@ -41,9 +50,13 @@ public class Health : MonoBehaviour
         UpdateHealthBar.Invoke(currentHP, maxHP);
     }
 
-    /*void OnDisable(){
-        Events.DealDMGEvent -= DealDMG;
-    }*/
+    void Update(){
+        if(waitTime > 0){
+            waitTime -= Time.deltaTime;
+        }else if(currentHP == 0){
+            Destroy(gameObject.transform.parent.gameObject);
+        }
+    }
 }
 
 [System.Serializable]

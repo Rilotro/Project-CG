@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DealDamage : MonoBehaviour
 {
     
-    GameObject[][] Tiles = new GameObject[8][];
+    GameObject[][] Tiles = new GameObject[11][];
     int i, j;// count = 0;
     Vector2 firstPos;
     //float waitTime;
@@ -15,13 +15,15 @@ public class DealDamage : MonoBehaviour
     void Awake(){
         Events.AssignTileEvent += AssignParent;
         firstPos = new Vector2((-1)*(gameObject.GetComponent<RectTransform>().rect.width - Tile.GetComponent<RectTransform>().rect.width)/2, (gameObject.GetComponent<RectTransform>().rect.height - Tile.GetComponent<RectTransform>().rect.height)/2);
-        Tiles[0] = new GameObject[8];
-        Tiles[1] = new GameObject[8];
-        Tiles[2] = new GameObject[8];
-        Tiles[3] = new GameObject[8];
-        Tiles[4] = new GameObject[8];
-        for(i = 0; i < 4; i++){
-            for(j = 0; j < 8; j++){
+        Tiles[0] = new GameObject[11];
+        Tiles[1] = new GameObject[11];
+        Tiles[2] = new GameObject[11];
+        Tiles[3] = new GameObject[11];
+        Tiles[4] = new GameObject[11];
+        Tiles[5] = new GameObject[11];
+        Tiles[6] = new GameObject[11];
+        for(i = 0; i < 7; i++){
+            for(j = 0; j < 11; j++){
                 Tiles[i][j] = Instantiate(Tile, new Vector3(60, 87, 0), Quaternion.identity);
                 Tiles[i][j].transform.SetParent(gameObject.transform, false);
                 Tiles[i][j].transform.localPosition = new Vector2(firstPos.x + 80*j, firstPos.y - 80*i);

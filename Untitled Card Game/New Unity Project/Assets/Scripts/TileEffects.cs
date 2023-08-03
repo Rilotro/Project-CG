@@ -71,11 +71,9 @@ public class TileEffects : MonoBehaviour
         FireCount = 0;
         gameObject.transform.parent.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
         int c = 0;
-        for(int i = 0; i < 4; i++){
-            for(int j = 0; j < 8; j++){
-                if(gameObject.transform.parent.parent.GetChild(i*8+j).GetChild(0).GetComponent<TileEffects>().getFireCount() > 0){
-                    c++;
-                }
+        for(int i = 0; i < gameObject.transform.parent.parent.childCount; i++){
+            if(gameObject.transform.parent.parent.GetChild(i).GetChild(0).GetComponent<TileEffects>().getFireCount() > 0){
+                c++;
             }
         }
         if(c == 0){
@@ -136,19 +134,19 @@ public class TileEffects : MonoBehaviour
         if((TAoE.x < 0)&&(TAoE.y < 0)){
             gameObject.GetComponent<Image>().color = newC;
         }else if(TAoE.x == 0){
-            for(int i = (int)pos.y; (i < (int)pos.y+(int)TAoE.y)&&(i < 8); i++){
-                gameObject.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).GetComponent<Image>().color = newC;
+            for(int i = (int)pos.y; (i < (int)pos.y+(int)TAoE.y)&&(i < 11); i++){
+                gameObject.transform.parent.parent.GetChild((int)pos.x*11+i).GetChild(0).GetComponent<Image>().color = newC;
             }
         }else if((TAoE.x != 0)&&(TAoE.y != 0)){
-            for(int i = (int)pos.x - ((int)TAoE.x-1)/2; (i <= (int)pos.x + ((int)TAoE.x-1)/2)&&(i < 4); i++){
+            for(int i = (int)pos.x - ((int)TAoE.x-1)/2; (i <= (int)pos.x + ((int)TAoE.x-1)/2)&&(i < 7); i++){
                 if(i < 0){
                     i = 0;
                 }
-                for(int j = (int)pos.y - ((int)TAoE.y-1)/2; (j <= (int)pos.y + ((int)TAoE.y-1)/2)&&(j < 8); j++){
+                for(int j = (int)pos.y - ((int)TAoE.y-1)/2; (j <= (int)pos.y + ((int)TAoE.y-1)/2)&&(j < 11); j++){
                     if(j < 0){
                         j = 0;
                     }
-                    gameObject.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).GetComponent<Image>().color = newC;
+                    gameObject.transform.parent.parent.GetChild((int)i*11+j).GetChild(0).GetComponent<Image>().color = newC;
                 }
             }
         }
