@@ -62,6 +62,10 @@ public class RoundSystem : MonoBehaviour
         Events.RoundEndEvent += EventRoundEnd;
         Events.AddUnitTimeEvent += addUnitTime;
         Events.AddMarkerEvent += addEvent;
+        Events.ReloadEvent += End;
+
+        gameObject.transform.parent.GetComponent<SceneScript>().giveEventBar(gameObject);
+
         addEvent(0, 0, null, new Vector2(-1, -1), new Color32(0, 255, 0, 255));//Player
         addEvent(1, 1, null, new Vector2(-1, -1), new Color32(255, 0, 0, 255));//Enemy
         Markers[0].RoundStart();
@@ -131,10 +135,19 @@ public class RoundSystem : MonoBehaviour
         Destroy(gameObject.transform.GetChild(pos).gameObject);
     }
 
+    void End(){
+        int i;
+        for(i = 0; Markers.Count > 0; i++){
+            Markers.Remove(Markers[0]);
+            Destroy(gameObject.transform.GetChild(i).gameObject);
+        }
+    }
+
     void OnDisable(){
         Events.ResumeTurnSystem -= TurnSystem;
         Events.RoundEndEvent -= EventRoundEnd;
         Events.AddUnitTimeEvent -= addUnitTime;
         Events.AddMarkerEvent -= addEvent;
+        Events.ReloadEvent -= End;
     }
 }

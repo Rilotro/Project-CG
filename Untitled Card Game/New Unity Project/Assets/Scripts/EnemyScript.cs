@@ -11,14 +11,21 @@ public class EnemyScript : UnitScript
     int intent = 0;
     Vector2 PlayerPos;
     Vector2 TAoE;
-    GameObject PlayerTile;
+    public GameObject PlayerTile;
     float x, y;
 
     void Start()
     {
         Events.RoundStartEvent += RoundStart;
+        Events.AssignTileEvent += safetyMeassure;
+        Events.ReloadEvent += End;
         Events.AssignTile(position, gameObject);
-        ChooseIntent();
+    }
+
+    public void safetyMeassure(Vector2 pos, GameObject Unit){
+        if(Unit.name.Contains("Player") == true){
+            ChooseIntent();
+        }
     }
 
     public void RoundStart(int id){
@@ -89,7 +96,7 @@ public class EnemyScript : UnitScript
         }
         for(int i = 0; i < gameObject.transform.parent.parent.childCount; i++){
             if(gameObject.transform.parent.parent.GetChild(i).childCount > 1){
-                if(gameObject.transform.parent.parent.GetChild(i).GetChild(1).name == "Player"){
+                if(gameObject.transform.parent.parent.GetChild(i).GetChild(1).name.Contains("Player") == true){
                     PlayerTile = gameObject.transform.parent.parent.GetChild(i).gameObject;
                     PlayerPos = gameObject.transform.parent.parent.GetChild(i).GetChild(0).GetComponent<TileEffects>().pos;
                 }
@@ -168,7 +175,17 @@ public class EnemyScript : UnitScript
         }
     }
 
+    public int getIntent(){
+        return intent;
+    }
+
+    void End(){
+        Destroy(gameObject);
+    }
+
     void OnDisable(){
         Events.RoundStartEvent -= RoundStart;
+        Events.AssignTileEvent -= safetyMeassure;
+        Events.ReloadEvent -= End;
     }
 }

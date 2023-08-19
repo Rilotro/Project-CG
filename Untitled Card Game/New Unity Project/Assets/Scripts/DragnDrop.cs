@@ -26,6 +26,7 @@ public class DragnDrop : MonoBehaviour
         {
             active = null;
             Events.Cast(gameObject, pos);
+            Events.Ungrounded(gameObject);
             Events.Discard(gameObject);
         }
     }

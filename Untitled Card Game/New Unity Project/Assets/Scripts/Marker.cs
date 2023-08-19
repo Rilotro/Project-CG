@@ -5,16 +5,17 @@ using UnityEngine.UI;
 
 public class Marker : MonoBehaviour
 {
-    int id;
+    public int id;
     public int Mpos;
-    float time;
+    public float time;
     float minX;
-    GameObject Target;
-    Vector2 AoE;
+    public GameObject Target;
+    public Vector2 AoE;
 
     public void giveId(int i, int pos, int t, GameObject Target, Vector2 TAoE, Color32 c){
         Events.RoundStartEvent += EventRoundStart;
         Events.UngroundCard += RemoveMe;
+
         id = i;
         Mpos = pos;
         time = (float)t;
@@ -52,21 +53,21 @@ public class Marker : MonoBehaviour
                     Events.DealDMG(10, Target);
                     Target.transform.GetComponent<TileEffects>().GetIgnited();
                 }else if(AoE.x == 0){
-                    for(int i = (int)pos.y; (i < (int)pos.y+(int)AoE.y)&&(i < 8); i++){
-                        Events.DealDMG(10, Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).gameObject);
-                        Target.transform.parent.parent.GetChild((int)pos.x*8+i).GetChild(0).GetComponent<TileEffects>().GetIgnited();
+                    for(int i = (int)pos.y; (i < (int)pos.y+(int)AoE.y)&&(i < 11); i++){
+                        Events.DealDMG(10, Target.transform.parent.parent.GetChild((int)pos.x*11+i).GetChild(0).gameObject);
+                        Target.transform.parent.parent.GetChild((int)pos.x*11+i).GetChild(0).GetComponent<TileEffects>().GetIgnited();
                     }
                 }else if((AoE.x != 0)&&(AoE.y != 0)){
-                    for(int i = (int)pos.x - ((int)AoE.x-1)/2; (i <= (int)pos.x + ((int)AoE.x-1)/2)&&(i < 4); i++){
+                    for(int i = (int)pos.x - ((int)AoE.x-1)/2; (i <= (int)pos.x + ((int)AoE.x-1)/2)&&(i < 7); i++){
                         if(i < 0){
                             i = 0;
                         }
-                        for(int j = (int)pos.y - ((int)AoE.y-1)/2; (j <= (int)pos.y + ((int)AoE.y-1)/2)&&(j < 8); j++){
+                        for(int j = (int)pos.y - ((int)AoE.y-1)/2; (j <= (int)pos.y + ((int)AoE.y-1)/2)&&(j < 11); j++){
                             if(j < 0){
                                 j = 0;
                             }
-                            Events.DealDMG(10, Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).gameObject);
-                            Target.transform.parent.parent.GetChild((int)i*8+j).GetChild(0).GetComponent<TileEffects>().GetIgnited();
+                            Events.DealDMG(10, Target.transform.parent.parent.GetChild((int)i*11+j).GetChild(0).gameObject);
+                            Target.transform.parent.parent.GetChild((int)i*11+j).GetChild(0).GetComponent<TileEffects>().GetIgnited();
                         }
                     }
                 }
@@ -78,9 +79,9 @@ public class Marker : MonoBehaviour
                 Events.RoundEnd(id);
                 break;
                 case 4:
-                for(int i = 0; i < 4; i++){
-                    for(int j = 0; j < 8; j++){
-                        Target.transform.parent.parent.GetChild(i*8+j).GetChild(0).GetComponent<TileEffects>().FireEffect();
+                for(int i = 0; i < 7; i++){
+                    for(int j = 0; j < 11; j++){
+                        Target.transform.parent.parent.GetChild(i*11+j).GetChild(0).GetComponent<TileEffects>().FireEffect();
                     }
                 }
                 if(TileEffects.FireExists == true){

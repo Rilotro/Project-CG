@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - heal
+  - damage
+  - fire
+  - increase
+  - increase, damage
+  - fire, increase
+  - heal, increase
+  - fire, damage
   layers:
   - Default
   - TransparentFX

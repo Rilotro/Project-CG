@@ -14,6 +14,9 @@ public class DealDamage : MonoBehaviour
 
     void Awake(){
         Events.AssignTileEvent += AssignParent;
+
+        gameObject.transform.parent.GetComponent<SceneScript>().giveBackGround(gameObject);
+        
         firstPos = new Vector2((-1)*(gameObject.GetComponent<RectTransform>().rect.width - Tile.GetComponent<RectTransform>().rect.width)/2, (gameObject.GetComponent<RectTransform>().rect.height - Tile.GetComponent<RectTransform>().rect.height)/2);
         Tiles[0] = new GameObject[11];
         Tiles[1] = new GameObject[11];

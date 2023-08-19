@@ -8,15 +8,15 @@ public class Events : MonoBehaviour
 {
     public static event Action<int> DrawCardsEvent;//DrawCards - DrawC;
     public static event Action<int, GameObject> DealDMGEvent;//Health - DealDMG TileEffects - EffectDMG;
-    public static event Action<GameObject, GameObject> CastEvent;//EffectDataBase - Cast;
+    public static event Action<GameObject, GameObject> CastEvent;//EffectDataBase - Cast, SceneScript - StoreCAction;
     public static event Action<int, int> AddUnitTimeEvent;//RoundSystem - addUnitTime;
     public static event Action<int> UpdateManaEvent;//ManaPoints - updateMana;
     public static event Action<int, int, GameObject, Vector2, Color32> AddMarkerEvent;//RoundSystem - addEvent;
-    public static event Action<int> RoundStartEvent;//EffectDataBase - PlayerRoundStart, EnemyAI - RoundStart, Marker - EventRoundStart, TileEffects - RoundStartRevert;
+    public static event Action<int> RoundStartEvent;//EffectDataBase - PlayerRoundStart, EnemyAI - RoundStart, Marker - EventRoundStart, TileEffects - RoundStartRevert, SceneScript - StoreAction;
     public static event Action<int> RoundEndEvent;//CardInfo - DestroyMe, RoundSystem - EventRoundEnd;
     public static event Action<int> GetMana;//DragnDrop - GetMana;
     public static event Action ResumeTurnSystem;//RoundSystem - TurnSystem;
-    public static event Action<Vector2, GameObject> AssignTileEvent;//DealDamage - AssignParent;
+    public static event Action<Vector2, GameObject> AssignTileEvent;//DealDamage - AssignParent, EnemyScript - safetyMeasure;
     public static event Action<GameObject> CastCardEvent;//DragnDrop - Activated;
     public static event Action Relocate;//PlayerRelocation - BeginRelocation;
     public static event Action<Color32> RecolorTiles;//TileEffects - Recolored;
@@ -25,9 +25,11 @@ public class Events : MonoBehaviour
     public static event Action<GameObject> CardDisableEvent;//Marker - RemoveMe;
     public static event Action<GameObject> UngroundCard;//Marker - RemoveMe;
     public static event Action<GameObject> Discarded;//DiscardScript - Discard;
+    public static event Action ReloadEvent;//UnitScript + EnemyScript + CardInfo + DeckScript + DiscardScript + RoundSystem + ManaPoints - End, CardDataBase + TileEffects - Reload, TileEffects - PutOut
 
     static float wait = -1;
     static bool resumed = true;
+
 
     public static void AssignTile(Vector2 pos, GameObject child){//UnitScript - Start;
         AssignTileEvent?.Invoke(pos, child);
@@ -97,6 +99,10 @@ public class Events : MonoBehaviour
 
     public static void Discard(GameObject Card){//DragnDrop - Activated, CardInfo - Destroyme;
         Discarded?.Invoke(Card);
+    }
+
+    public static void Reload(){//Health - Update;
+        ReloadEvent?.Invoke();
     }
 
     public static void RoundEnd(int id){//EndRound - EndonClick, EnemyAI - RoundStart, Marker - EventRoundStart;

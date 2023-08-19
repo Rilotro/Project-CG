@@ -19,6 +19,9 @@ public class TileEffects : MonoBehaviour
         Events.RecolorTiles += Recolored;
         Events.giveTilesAoE += getAoe;
         Events.RoundStartEvent += RoundStartRevert;
+        Events.ReloadEvent += PutOut;
+        Events.ReloadEvent += Reload;
+
         baseColor = gameObject.transform.GetComponent<Image>().color;
     }
 
@@ -27,6 +30,11 @@ public class TileEffects : MonoBehaviour
             baseColor = new Color32(255, 255, 255, 0);
             gameObject.transform.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
         }
+    }
+
+    void Reload(){
+        baseColor = new Color32(255, 255, 255, 0);
+        gameObject.transform.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
     }
 
     public void EffectDMG(int DMG, GameObject Tile){
@@ -84,6 +92,10 @@ public class TileEffects : MonoBehaviour
 
     public int getFireCount(){
         return FireCount;
+    }
+
+    public void setCount(int c){
+        FireCount = c;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------
@@ -175,5 +187,7 @@ public class TileEffects : MonoBehaviour
         Events.RecolorTiles -= Recolored;
         Events.giveTilesAoE -= getAoe;
         Events.RoundStartEvent -= RoundStartRevert;
+        Events.ReloadEvent -= PutOut;
+        Events.ReloadEvent -= Reload;
     }
 }

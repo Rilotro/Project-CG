@@ -20,8 +20,11 @@ public class GOScript : MonoBehaviour
     void Update(){
         if((waitTime > 0)&&(waitTime < 1f)){
             c = gameObject.transform.GetComponent<Image>().color;
-            c.a += (byte)Time.deltaTime;
+            if(c.a <= 0.5){
+                c.a += (byte)255/150;
+            }
             gameObject.transform.GetComponent<Image>().color = c;
+            //print(gameObject.transform.GetComponent<Image>().color);
             waitTime -= Time.deltaTime;
         }else if(waitTime > 0){
             waitTime -= Time.deltaTime;

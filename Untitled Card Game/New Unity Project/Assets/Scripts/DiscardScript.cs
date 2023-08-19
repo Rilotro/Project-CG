@@ -12,11 +12,14 @@ public class DiscardScript : MonoBehaviour
 
     void Awake(){
         Events.Discarded += Discard;
+        Events.ReloadEvent += End;
+
         DO = Instantiate(DeckOverlay, new Vector3(0, 0, 0), Quaternion.identity);
         DO.transform.SetParent(gameObject.transform.parent, false);
         DO.transform.localPosition = new Vector3(0, 0, 0);
         DO.transform.SetSiblingIndex(0);
         DO.name = "DiscardOverlay";
+        gameObject.transform.parent.GetComponent<SceneScript>().giveDiscardOverlay(DO);
     }
 
     void Discard(GameObject Card){
@@ -32,7 +35,14 @@ public class DiscardScript : MonoBehaviour
         
     }
 
+    void End(){
+        while(DiscardedCards.Count > 0){
+            DiscardedCards.Remove(DiscardedCards[0]);
+        }
+    }
+
     void OnDisable(){
         Events.Discarded -= Discard;
+        Events.ReloadEvent -= End;
     }
 }

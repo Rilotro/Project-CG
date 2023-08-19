@@ -237,6 +237,7 @@ public class EffectDataBase : MonoBehaviour
     {
         Events.CastEvent += Cast;
         Events.RoundStartEvent += PlayerRoundStart;
+        gameObject.transform.parent.GetComponent<SceneScript>().givePlayerHand(gameObject);
     }
     void OnDisable(){
         Events.CastEvent -= Cast;

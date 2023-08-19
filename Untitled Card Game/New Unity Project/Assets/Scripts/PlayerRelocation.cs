@@ -14,7 +14,7 @@ public class PlayerRelocation : MonoBehaviour
         Events.Recolor(new Color32(0, 0, 255, 50));
         for(int i = 0; i < gameObject.transform.childCount; i++){
             if(gameObject.transform.GetChild(i).childCount > 1){
-                if(gameObject.transform.GetChild(i).GetChild(1).name == "Player"){
+                if(gameObject.transform.GetChild(i).GetChild(1).name.Contains("Player") == true){
                     TileEffects.Player = gameObject.transform.GetChild(i).GetChild(1).gameObject;
                 }
             }

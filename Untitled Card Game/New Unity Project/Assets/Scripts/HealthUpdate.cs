@@ -7,7 +7,7 @@ public class HealthUpdate : MonoBehaviour
     float maxWidth;
     public Vector3 originalPos;
 
-    void Start(){
+    void Awake(){
         maxWidth = gameObject.GetComponent<RectTransform>().rect.width;
         originalPos = gameObject.GetComponent<RectTransform>().localPosition;
     }

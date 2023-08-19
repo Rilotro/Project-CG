@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
     public void DealDMG(int DMG, GameObject Target)
     {
         if(gameObject.transform.parent.gameObject == Target){
-            if ((currentHP - DMG >= 0)&&(currentHP - DMG <= maxHP)){
+            if ((currentHP - DMG > 0)&&(currentHP - DMG <= maxHP)){
                 currentHP -= DMG;
                 UpdateHealthBar.Invoke(currentHP, maxHP);
             }else if(currentHP - DMG > maxHP){
@@ -27,14 +27,15 @@ public class Health : MonoBehaviour
             }else if(currentHP != 0){
                 currentHP = 0;
                 UpdateHealthBar.Invoke(currentHP, maxHP);
-                GameObject Overlay = Instantiate(GO, new Vector3(0, 0, 0), Quaternion.identity);
+                /*GameObject Overlay = Instantiate(GO, new Vector3(0, 0, 0), Quaternion.identity);
                 Overlay.transform.SetParent(gameObject.transform.parent.parent.parent.parent, false);
-                if(gameObject.transform.parent.name == "Player"){
+                if(gameObject.transform.parent.name.Contains("Player") == true){
                     Overlay.transform.GetComponent<GOScript>().GameOver(0);
                 }else{
                     Overlay.transform.GetComponent<GOScript>().GameOver(1);
-                }
-                waitTime = 2f;
+                }*/
+                //waitTime = 2f;
+                Events.Reload();
             }
         }
 
@@ -43,20 +44,22 @@ public class Health : MonoBehaviour
     void Awake()
     {
         maxHP = 100;
-        currentHP = maxHP;;
+        currentHP = maxHP;
+        print(gameObject.GetComponent<RectTransform>().rect.width);
     }
     void Start(){
         //Events.DealDMGEvent += DealDMG;
         UpdateHealthBar.Invoke(currentHP, maxHP);
     }
 
-    void Update(){
+    /*void Update(){
         if(waitTime > 0){
             waitTime -= Time.deltaTime;
         }else if(currentHP == 0){
-            Destroy(gameObject.transform.parent.gameObject);
+            //Destroy(gameObject.transform.parent.gameObject);
+            //Events.Reload();
         }
-    }
+    }*/
 }
 
 [System.Serializable]
