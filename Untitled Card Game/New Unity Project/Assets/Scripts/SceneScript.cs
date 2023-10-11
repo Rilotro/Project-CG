@@ -103,7 +103,7 @@ public class SceneScript : MonoBehaviour
             currentScene = new Scene();
         }
 
-        public void MarkerAction(int Id, int DMG, Vector2 Tile, Vector2 TAoE, Scene scene){
+        /*public void MarkerAction(int Id, int DMG, Vector2 Tile, Vector2 TAoE, Scene scene){
             id = Id;
             damage = DMG;
             Tpos = Tile;
@@ -124,7 +124,7 @@ public class SceneScript : MonoBehaviour
             Tpos = Tile;
             AoE = TAoE;
             currentScene = scene;
-        }
+        }*/
 
         public void CardAction(int Id, int DMG, int Time, int Mana, Vector2 Tile, Vector2 TAoE, Scene scene){
             id = Id;
@@ -200,7 +200,7 @@ public class SceneScript : MonoBehaviour
 
     void Awake(){
         Events.ReloadEvent += PostponedReload;
-        Events.RoundStartEvent += StoreAction;
+        //Events.RoundStartEvent += StoreAction;
         Events.CastEvent += StoreCAction;
     }
 
@@ -294,7 +294,7 @@ public class SceneScript : MonoBehaviour
         Backup(startScene);
     }
 
-    void StoreAction(int id){
+    /*void StoreAction(int id){
         if(id == 1){
             Action EAction = new Action();
             if(EnemyUnit.GetComponent<EnemyScript>().getIntent() < 70){
@@ -330,7 +330,7 @@ public class SceneScript : MonoBehaviour
             MAction.MarkerAction(2, 10, Tile, new Vector2(3, 3), StoreScene());
             History.Add(MAction);
         }
-    }
+    }*/
 
     void StoreCAction(GameObject Card, GameObject Tile){
         Action CAction = new Action();
@@ -406,7 +406,7 @@ public class SceneScript : MonoBehaviour
 
     void OnDisable(){
         Events.ReloadEvent -= PostponedReload;
-        Events.RoundStartEvent -= StoreAction;
+        //Events.RoundStartEvent -= StoreAction;
         Events.CastEvent -= StoreCAction;
     }
 }
