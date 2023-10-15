@@ -18,28 +18,19 @@ public class EditDeckScipt : MonoBehaviour
             DO = Instantiate(DeckOverlay, new Vector3(0, 0, 0), Quaternion.identity);
             DO.transform.SetParent(gameObject.transform.parent, false);
             DO.name = "AddCardsOverlay";
+            DO.GetComponent<GridLayoutGroup>().spacing = new Vector2(50, 25);
 
-            GameObject tempCard = Instantiate(Card, new Vector3(0, 0, 0), Quaternion.identity);
-            tempCard.GetComponent<RectTransform>().sizeDelta = new Vector2(tempCard.GetComponent<RectTransform>().rect.width*sizeRatio, tempCard.GetComponent<RectTransform>().rect.height*sizeRatio);
-            tempCard.transform.SetParent(DO.transform, false);
-            tempCard.GetComponent<CardInfo>().Give(Random.Range(1, 9));
+            for(int i = 1; i < 9; i++){
+                GameObject tempCard = Instantiate(Card, new Vector3(0, 0, 0), Quaternion.identity);
+                tempCard.transform.SetParent(DO.transform, false);
+                tempCard.GetComponent<CardInfo>().Give(i);
 
-            tempCard.transform.GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(tempCard.transform.GetChild(0).GetComponent<RectTransform>().rect.width*sizeRatio, tempCard.transform.GetChild(0).GetComponent<RectTransform>().rect.height*sizeRatio);
-            tempCard.transform.GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(tempCard.transform.GetChild(0).GetChild(0).GetComponent<RectTransform>().rect.width*sizeRatio, tempCard.transform.GetChild(0).GetChild(0).GetComponent<RectTransform>().rect.height*sizeRatio);
-            tempCard.transform.GetChild(0).localPosition = new Vector3(tempCard.transform.GetChild(0).GetComponent<RectTransform>().rect.width/2 - tempCard.GetComponent<RectTransform>().rect.width/2, tempCard.GetComponent<RectTransform>().rect.height/2 - tempCard.transform.GetChild(0).GetComponent<RectTransform>().rect.height/2);
-
-            tempCard.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(tempCard.transform.GetChild(1).GetComponent<RectTransform>().rect.width*sizeRatio, tempCard.transform.GetChild(1).GetComponent<RectTransform>().rect.height*sizeRatio);
-            tempCard.transform.GetChild(1).localPosition = new Vector3(0, tempCard.transform.GetChild(1).GetComponent<RectTransform>().rect.height/2 - tempCard.GetComponent<RectTransform>().rect.height/2);
-
-            tempCard.transform.GetChild(2).GetComponent<RectTransform>().sizeDelta = new Vector2(tempCard.transform.GetChild(2).GetComponent<RectTransform>().rect.width*sizeRatio, tempCard.transform.GetChild(2).GetComponent<RectTransform>().rect.height*sizeRatio);
-            tempCard.transform.GetChild(2).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(tempCard.transform.GetChild(2).GetChild(0).GetComponent<RectTransform>().rect.width*sizeRatio, tempCard.transform.GetChild(2).GetChild(0).GetComponent<RectTransform>().rect.height*sizeRatio);
-            tempCard.transform.GetChild(2).localPosition = new Vector3((-1)*(tempCard.transform.GetChild(2).GetComponent<RectTransform>().rect.width/2 - tempCard.GetComponent<RectTransform>().rect.width/2), tempCard.GetComponent<RectTransform>().rect.height/2 - tempCard.transform.GetChild(2).GetComponent<RectTransform>().rect.height/2);
-
-            GameObject tempText = Instantiate(CCES, new Vector3(0, 0, 0), Quaternion.identity);
-            tempText.transform.GetChild(2).GetComponent<Text>().text = "0";
-            tempText.transform.SetParent(tempCard.transform, false);
-            tempText.name = "CCES";
-            tempText.transform.localPosition = new Vector3(0, (-1)*(tempCard.GetComponent<RectTransform>().rect.height/2 + tempText.transform.GetChild(0).GetComponent<RectTransform>().rect.height/2), 0);
+                GameObject tempText = Instantiate(CCES, new Vector3(0, 0, 0), Quaternion.identity);
+                tempText.transform.GetChild(2).GetComponent<Text>().text = "0";
+                tempText.transform.SetParent(tempCard.transform, false);
+                tempText.name = "CCES";
+                tempText.transform.localPosition = new Vector3(0, (-1)*(tempCard.GetComponent<RectTransform>().rect.height/2 + tempText.transform.GetChild(0).GetComponent<RectTransform>().rect.height/2), 0);
+            }
         }
     }
 }

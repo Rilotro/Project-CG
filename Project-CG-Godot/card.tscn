@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://difax4xn5cwg4"]
+
+[ext_resource type="Texture2D" uid="uid://dwn80m2udwpn7" path="res://icon.svg" id="1_rtmqr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_n1mn0"]
+
+[node name="Card" type="Node2D"]
+
+[node name="Border" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(77, 121)
+texture = SubResource("CanvasTexture_n1mn0")
+metadata/_edit_lock_ = true
+
+[node name="Icon" type="Sprite2D" parent="Border"]
+position = Vector2(0, -0.273)
+scale = Vector2(0.00655031, 0.00267566)
+texture = ExtResource("1_rtmqr")
