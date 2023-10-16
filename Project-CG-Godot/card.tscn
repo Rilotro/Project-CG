@@ -4,12 +4,31 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_n1mn0"]
 
-[node name="Card" type="Node2D"]
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="Border" type="Sprite2D" parent="."]
-position = Vector2(1, 0)
+z_index = -1
+z_as_relative = false
 scale = Vector2(77, 121)
 texture = SubResource("CanvasTexture_n1mn0")
+
+[node name="Node2D" type="Node2D" parent="Border"]
+z_index = 2
+z_as_relative = false
+scale = Vector2(0.012987, 0.00826446)
+
+[node name="Label" type="Label" parent="Border/Node2D"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -33.0
+offset_top = 3.0
+offset_right = 34.0
+offset_bottom = 55.0
+text = "Play: do nothing"
+vertical_alignment = 1
+autowrap_mode = 3
 metadata/_edit_lock_ = true
 
 [node name="Icon" type="Sprite2D" parent="Border"]
