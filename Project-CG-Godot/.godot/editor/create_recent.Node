@@ -1,7 +1,11 @@
+Sprite2D
+MarginContainer
+Label
+CenterContainer
+HBoxContainer
+VBoxContainer
+TextEdit
 Node2D
 CanvasLayer
-Sprite2D
 RichTextLabel
-Label
-TextEdit
 Control

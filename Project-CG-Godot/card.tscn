@@ -1,37 +1,138 @@
-[gd_scene load_steps=3 format=3 uid="uid://difax4xn5cwg4"]
+[gd_scene load_steps=8 format=3 uid="uid://difax4xn5cwg4"]
 
-[ext_resource type="Texture2D" uid="uid://dwn80m2udwpn7" path="res://icon.svg" id="1_rtmqr"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_4uhkj"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_n1mn0"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_afpkf"]
+specular_color = Color(0, 1, 0, 1)
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[sub_resource type="LabelSettings" id="LabelSettings_il0e6"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fo1rs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_03rni"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_guop7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qot0c"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Card" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -902.0
+offset_bottom = -298.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(125, 175)
 
 [node name="Border" type="Sprite2D" parent="."]
-z_index = -1
-z_as_relative = false
-scale = Vector2(77, 121)
-texture = SubResource("CanvasTexture_n1mn0")
+position = Vector2(125, 175)
+scale = Vector2(250, 350)
+texture = SubResource("CanvasTexture_4uhkj")
 
-[node name="Node2D" type="Node2D" parent="Border"]
-z_index = 2
-z_as_relative = false
-scale = Vector2(0.012987, 0.00826446)
+[node name="CardFace" type="Sprite2D" parent="."]
+position = Vector2(125, 175)
+scale = Vector2(220, 320)
+texture = SubResource("CanvasTexture_afpkf")
 
-[node name="Label" type="Label" parent="Border/Node2D"]
-modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0, 0, 0, 1)
-offset_left = -33.0
-offset_top = 3.0
-offset_right = 34.0
-offset_bottom = 55.0
-text = "Play: do nothing"
+[node name="Bars" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TopGap" type="MarginContainer" parent="Bars"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="InfoBox" type="HBoxContainer" parent="Bars"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LeftGap" type="MarginContainer" parent="Bars/InfoBox"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Cooldown" type="MarginContainer" parent="Bars/InfoBox"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Bars/InfoBox/Cooldown"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Bars/InfoBox/Cooldown/CenterContainer"]
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_il0e6")
+
+[node name="Name" type="MarginContainer" parent="Bars/InfoBox"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Bars/InfoBox/Name"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Bars/InfoBox/Name/CenterContainer"]
+layout_mode = 2
+text = "111111111111111111111"
+label_settings = SubResource("LabelSettings_fo1rs")
+
+[node name="Mana" type="MarginContainer" parent="Bars/InfoBox"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Bars/InfoBox/Mana"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Bars/InfoBox/Mana/CenterContainer"]
+layout_mode = 2
+text = "5"
+label_settings = SubResource("LabelSettings_03rni")
+
+[node name="ImageBox" type="HBoxContainer" parent="Bars"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Bars/ImageBox"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="Image" type="MarginContainer" parent="Bars/ImageBox"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Bars/ImageBox/Image"]
+position = Vector2(110, 70)
+scale = Vector2(220, 140)
+texture = SubResource("CanvasTexture_guop7")
+
+[node name="TextBox" type="HBoxContainer" parent="Bars"]
+custom_minimum_size = Vector2(0, 154)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LeftGap" type="MarginContainer" parent="Bars/TextBox"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="TextArea" type="MarginContainer" parent="Bars/TextBox"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Bars/TextBox/TextArea"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Bars/TextBox/TextArea/CenterContainer"]
+layout_mode = 2
+text = "Play: Kill everyone
+
+
+
+
+
+"
+label_settings = SubResource("LabelSettings_qot0c")
 vertical_alignment = 1
-autowrap_mode = 3
-metadata/_edit_lock_ = true
-
-[node name="Icon" type="Sprite2D" parent="Border"]
-position = Vector2(0, -0.273)
-scale = Vector2(0.00655031, 0.00267566)
-texture = ExtResource("1_rtmqr")
