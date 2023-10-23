@@ -1,1 +1,12 @@
+res://Card1.tscn
+res://Card1.gd
 res://Card.tscn
+res://Card.gd
+res://Card2.tscn
+res://Card2.gd
+res://Card3.tscn
+res://Card3.gd
+res://Card4.tscn
+res://Card4.gd
+res://Hand.gd
+res://TestArea.tscn
