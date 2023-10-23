@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://difax4xn5cwg4"]
+[gd_scene load_steps=9 format=3 uid="uid://difax4xn5cwg4"]
 
 [ext_resource type="Script" path="res://Card.gd" id="1_38uwn"]
-[ext_resource type="PackedScene" uid="uid://dulqbqxbbnpjh" path="res://CardDataBase/Card1.tscn" id="2_vbv3p"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_4uhkj"]
 
@@ -9,54 +8,59 @@
 specular_color = Color(0, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_il0e6"]
+font_size = 9
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fo1rs"]
+font_size = 9
 
 [sub_resource type="LabelSettings" id="LabelSettings_03rni"]
+font_size = 9
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_guop7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qot0c"]
+font_size = 9
 font_color = Color(0, 0, 0, 1)
 
 [node name="Card" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -902.0
-offset_bottom = -298.0
+offset_right = -1027.0
+offset_bottom = -473.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(125, 175)
 script = ExtResource("1_38uwn")
 
 [node name="Border" type="Sprite2D" parent="."]
-position = Vector2(125, 175)
-scale = Vector2(250, 350)
+position = Vector2(62.6, 87.5)
+scale = Vector2(125, 175)
 texture = SubResource("CanvasTexture_4uhkj")
 
 [node name="CardFace" type="Sprite2D" parent="."]
-position = Vector2(125, 175)
-scale = Vector2(220, 320)
+position = Vector2(62.5, 87.5)
+scale = Vector2(110, 160)
 texture = SubResource("CanvasTexture_afpkf")
 
 [node name="Bars" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(125, 175)
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="TopGap" type="MarginContainer" parent="Bars"]
-custom_minimum_size = Vector2(0, 15)
+custom_minimum_size = Vector2(125, 8)
 layout_mode = 2
 
 [node name="InfoBox" type="HBoxContainer" parent="Bars"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="LeftGap" type="MarginContainer" parent="Bars/InfoBox"]
-custom_minimum_size = Vector2(15, 0)
+custom_minimum_size = Vector2(7.5, 22.5)
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
@@ -71,7 +75,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Bars/InfoBox/Cooldown/CenterContainer"]
 layout_mode = 2
-text = "10"
+text = "30"
 label_settings = SubResource("LabelSettings_il0e6")
 
 [node name="Name" type="MarginContainer" parent="Bars/InfoBox"]
@@ -82,7 +86,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Bars/InfoBox/Name/CenterContainer"]
 layout_mode = 2
-text = "111111111111111111111"
+text = "111111111111111111"
 label_settings = SubResource("LabelSettings_fo1rs")
 
 [node name="Mana" type="MarginContainer" parent="Bars/InfoBox"]
@@ -97,50 +101,45 @@ text = "5"
 label_settings = SubResource("LabelSettings_03rni")
 
 [node name="ImageBox" type="HBoxContainer" parent="Bars"]
-custom_minimum_size = Vector2(0, 140)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Bars/ImageBox"]
-custom_minimum_size = Vector2(15, 0)
+custom_minimum_size = Vector2(7.5, 0)
 layout_mode = 2
 
 [node name="Image" type="MarginContainer" parent="Bars/ImageBox"]
-custom_minimum_size = Vector2(220, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Bars/ImageBox/Image"]
-position = Vector2(110, 70)
-scale = Vector2(220, 140)
+position = Vector2(55, 35)
+scale = Vector2(110, 70)
 texture = SubResource("CanvasTexture_guop7")
 
 [node name="TextBox" type="HBoxContainer" parent="Bars"]
-custom_minimum_size = Vector2(0, 154)
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="LeftGap" type="MarginContainer" parent="Bars/TextBox"]
-custom_minimum_size = Vector2(15, 0)
+custom_minimum_size = Vector2(7.5, 0)
 layout_mode = 2
 
 [node name="TextArea" type="MarginContainer" parent="Bars/TextBox"]
-custom_minimum_size = Vector2(220, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="Bars/TextBox/TextArea"]
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Bars/TextBox/TextArea/CenterContainer"]
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
-text = "Play: Kill everyone
-
-
-
-
-
-"
+text = "Play: Deal 10 dollars"
 label_settings = SubResource("LabelSettings_qot0c")
+horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Control" parent="." instance=ExtResource("2_vbv3p")]
-layout_mode = 2
+autowrap_mode = 2

@@ -1,7 +1,7 @@
-Sprite2D
 MarginContainer
 HBoxContainer
 VBoxContainer
+Sprite2D
 Label
 CenterContainer
 TextEdit
