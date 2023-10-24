@@ -1,8 +1,10 @@
+Sprite2D
 MarginContainer
+CollisionShape2D
+Area2D
+Label
 HBoxContainer
 VBoxContainer
-Sprite2D
-Label
 CenterContainer
 TextEdit
 Node2D

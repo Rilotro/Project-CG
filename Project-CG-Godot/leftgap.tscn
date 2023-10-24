@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bjgbpwf8ldb5g"]
+
+[node name="LeftGap" type="MarginContainer"]
