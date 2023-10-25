@@ -1,14 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://j20k4ptfofui"]
+[gd_scene load_steps=4 format=3 uid="uid://j20k4ptfofui"]
+
+[ext_resource type="PackedScene" uid="uid://bt1xqvf8qvnwb" path="res://Health.tscn" id="1_h1c2d"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wfnlx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kr3e"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_hiwau"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_f8nl4"]
-font_size = 15
-font_color = Color(0, 1, 0, 1)
 
 [node name="Player" type="Control"]
 layout_mode = 3
@@ -39,7 +35,6 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/ImageContainer/Image"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(50, 50)
 scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_wfnlx")
@@ -51,16 +46,5 @@ position = Vector2(50, 50)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_4kr3e")
 
-[node name="HealtContainer" type="MarginContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
+[node name="HealtContainer" parent="VBoxContainer" instance=ExtResource("1_h1c2d")]
 layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HealtContainer"]
-position = Vector2(70, 12.5)
-scale = Vector2(140, 25)
-texture = SubResource("CanvasTexture_hiwau")
-
-[node name="Label" type="Label" parent="VBoxContainer/HealtContainer"]
-layout_mode = 2
-text = "           100/100"
-label_settings = SubResource("LabelSettings_f8nl4")

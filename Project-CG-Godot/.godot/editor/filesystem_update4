@@ -1,7 +1,10 @@
-res://TestArea.tscn
-res://Hand.gd
-res://Card.tscn
-res://CardDataBase/Card1.tscn
-res://leftgap.tscn
 res://Player.tscn
 res://Enemy.tscn
+res://Health.tscn
+res://Health.gd
+res://HealthText.gd
+res://Card.tscn
+res://TestArea.tscn
+res://CardDataBase/Card1.tscn
+res://leftgap.tscn
+res://HealthBar.gd
