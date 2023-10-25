@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bt1xqvf8qvnwb"]
+
+[ext_resource type="Script" path="res://Health.gd" id="1_vi8e2"]
+[ext_resource type="Script" path="res://HealthBar.gd" id="2_bec25"]
+[ext_resource type="Script" path="res://HealthText.gd" id="2_rs2vn"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3y6qr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hiwau"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f8nl4"]
+font_size = 15
+font_color = Color(0, 0, 0, 1)
+
+[node name="HealtContainer" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 25)
+script = ExtResource("1_vi8e2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(70, 12.5)
+scale = Vector2(140, 25)
+texture = SubResource("CanvasTexture_3y6qr")
+
+[node name="HealthBar" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(70, 12.5)
+scale = Vector2(140, 25)
+texture = SubResource("CanvasTexture_hiwau")
+script = ExtResource("2_bec25")
+
+[node name="HealthText" type="Label" parent="."]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_f8nl4")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_rs2vn")

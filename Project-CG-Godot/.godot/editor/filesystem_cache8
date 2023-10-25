@@ -1,13 +1,13 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1698143525
+::res://::1698228208
 Card.gd::GDScript::-1::1698138153::0::1::::<>MarginContainer<>::
 Card.tscn::PackedScene::7731137321552184337::1698139310::0::1::::<><>::res://Card.gd
+Enemy.tscn::PackedScene::1366417506515090842::1698144540::0::1::::<><>::
 Hand.gd::GDScript::-1::1698139307::0::1::::<>MarginContainer<>::
 icon.svg::CompressedTexture2D::8732302500431229366::1697360965::1697360965::1::::<><>::
 leftgap.tscn::PackedScene::3030595211613005102::1698139311::0::1::::<><>::
 Player.tscn::PackedScene::688975122079847844::1698144469::0::1::::<><>::
-Enemy.tscn::PackedScene::1366417506515090842::1698144491::0::1::::<><>::
-TestArea.tscn::PackedScene::5254520028600742481::1698140464::0::1::::<><>::res://Hand.gd<>uid://bjgbpwf8ldb5g::::res://leftgap.tscn
+TestArea.tscn::PackedScene::5254520028600742481::1698145027::0::1::::<><>::uid://tp5xxm7ht2e5::::res://Enemy.tscn<>res://Hand.gd<>uid://bjgbpwf8ldb5g::::res://leftgap.tscn<>uid://j20k4ptfofui::::res://Player.tscn
 ::res://CardDataBase/::1698139311
 Card1.gd::GDScript::-1::1698138153::0::1::::<>Control<>::
 Card1.tscn::PackedScene::8586721212764180941::1698139311::0::1::::<><>::res://CardDataBase/Card1.gd
