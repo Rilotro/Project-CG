@@ -46,5 +46,5 @@ position = Vector2(50, 50)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_4kr3e")
 
-[node name="HealtContainer" parent="VBoxContainer" instance=ExtResource("1_h1c2d")]
+[node name="HealthContainer" parent="VBoxContainer" instance=ExtResource("1_h1c2d")]
 layout_mode = 2

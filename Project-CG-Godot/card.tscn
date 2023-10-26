@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://difax4xn5cwg4"]
+[gd_scene load_steps=10 format=3 uid="uid://difax4xn5cwg4"]
 
 [ext_resource type="Script" path="res://Card.gd" id="1_38uwn"]
 
@@ -23,6 +23,8 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_qot0c"]
 font_size = 9
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1r88"]
 
 [node name="Card" type="MarginContainer"]
 custom_minimum_size = Vector2(110, 0)
@@ -144,3 +146,13 @@ label_settings = SubResource("LabelSettings_qot0c")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(62.5, 87.5)
+scale = Vector2(6.25, 8.75)
+shape = SubResource("RectangleShape2D_j1r88")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

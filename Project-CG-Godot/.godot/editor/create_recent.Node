@@ -1,7 +1,7 @@
-Sprite2D
-MarginContainer
 CollisionShape2D
 Area2D
+Sprite2D
+MarginContainer
 Label
 HBoxContainer
 VBoxContainer

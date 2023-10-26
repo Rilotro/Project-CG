@@ -12,3 +12,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func Activated(Target):
+	print("activated1");
+	Target.Damaged(10);
+	get_parent().queue_free();

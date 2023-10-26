@@ -24,7 +24,7 @@ func Draw():
 	tempCard.add_child(CDB[rng.randi_range(0, 3)].instantiate());
 	$CardArea/CardGrid.add_child(tempCard);
 	CardsinHand += 1;
-	tempCard.name = str("Card", CardsinHand);
+	tempCard.name = str("PlayCard", CardsinHand);
 	
 	match CardsinHand:
 		1:
