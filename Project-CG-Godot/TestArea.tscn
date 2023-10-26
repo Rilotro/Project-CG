@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cg4lga2y0442p"]
+[gd_scene load_steps=8 format=3 uid="uid://cg4lga2y0442p"]
 
 [ext_resource type="Script" path="res://TestArea.gd" id="1_0x4aj"]
 [ext_resource type="PackedScene" uid="uid://tp5xxm7ht2e5" path="res://Enemy.tscn" id="1_5muhv"]
 [ext_resource type="Script" path="res://Hand.gd" id="1_tt5gw"]
 [ext_resource type="PackedScene" uid="uid://bjgbpwf8ldb5g" path="res://leftgap.tscn" id="2_4c85l"]
 [ext_resource type="PackedScene" uid="uid://j20k4ptfofui" path="res://Player.tscn" id="2_b4ner"]
+[ext_resource type="PackedScene" uid="uid://difax4xn5cwg4" path="res://Card.tscn" id="5_kmp2o"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1lk3j"]
 
@@ -68,6 +69,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 script = ExtResource("1_tt5gw")
+Card = ExtResource("5_kmp2o")
 separation = ExtResource("2_4c85l")
 
 [node name="CardArea" type="VBoxContainer" parent="VBoxContainer/CardArea/Hand"]

@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Node2D
 
 var CDB;
 var entered = false;
@@ -45,3 +45,4 @@ func deactivate():
 
 func Activated(Target):
 	$Control.Activated(Target);
+

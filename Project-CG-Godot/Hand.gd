@@ -2,7 +2,7 @@ extends MarginContainer
 
 @export var CDB = [];
 @export var CardCount = 4;
-@export var Card = load("res://Card.tscn");
+@export var Card: PackedScene;
 @export var separation: PackedScene;
 var rng = RandomNumberGenerator.new();
 var too_many = false;
@@ -23,6 +23,7 @@ func Draw():
 	var tempCard = Card.instantiate();
 	tempCard.add_child(CDB[rng.randi_range(0, 3)].instantiate());
 	$CardArea/CardGrid.add_child(tempCard);
+	tempCard.position = Vector2(125 * CardsinHand, 0);
 	CardsinHand += 1;
 	tempCard.name = str("PlayCard", CardsinHand);
 	
@@ -45,8 +46,8 @@ func Draw():
 		_:
 			print("too many!");
 
-	if too_many == false:
-		var tempsep = separation.instantiate()
-		tempsep.name = str("CardGap", CardsinHand);
-		$CardArea/CardGrid.add_child(tempsep);
-		tempsep.custom_minimum_size = Vector2(18.75, 0);
+	#if too_many == false:
+	#	var tempsep = separation.instantiate()
+	#	tempsep.name = str("CardGap", CardsinHand);
+	#	$CardArea/CardGrid.add_child(tempsep);
+	#	tempsep.custom_minimum_size = Vector2(18.75, 0);
