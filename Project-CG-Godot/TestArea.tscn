@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Hand.gd" id="1_tt5gw"]
 [ext_resource type="PackedScene" uid="uid://bjgbpwf8ldb5g" path="res://leftgap.tscn" id="2_4c85l"]
 [ext_resource type="PackedScene" uid="uid://j20k4ptfofui" path="res://Player.tscn" id="2_b4ner"]
-[ext_resource type="PackedScene" uid="uid://difax4xn5cwg4" path="res://Card.tscn" id="5_kmp2o"]
+[ext_resource type="PackedScene" uid="uid://difax4xn5cwg4" path="res://Card.tscn" id="5_nnvgt"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1lk3j"]
 
@@ -69,7 +69,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 script = ExtResource("1_tt5gw")
-Card = ExtResource("5_kmp2o")
+Card = ExtResource("5_nnvgt")
 separation = ExtResource("2_4c85l")
 
 [node name="CardArea" type="VBoxContainer" parent="VBoxContainer/CardArea/Hand"]
@@ -89,6 +89,3 @@ layout_mode = 2
 [node name="CardGrid" type="HBoxContainer" parent="VBoxContainer/CardArea/Hand/CardArea"]
 layout_mode = 2
 theme_override_constants/separation = 0
-
-[node name="LeftGap" parent="VBoxContainer/CardArea/Hand/CardArea/CardGrid" instance=ExtResource("2_4c85l")]
-layout_mode = 2

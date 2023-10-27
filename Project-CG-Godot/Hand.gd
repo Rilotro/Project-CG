@@ -1,5 +1,6 @@
 extends MarginContainer
 
+@export var CardSize = 125;
 @export var CDB = [];
 @export var CardCount = 4;
 @export var Card: PackedScene;
@@ -23,31 +24,19 @@ func Draw():
 	var tempCard = Card.instantiate();
 	tempCard.add_child(CDB[rng.randi_range(0, 3)].instantiate());
 	$CardArea/CardGrid.add_child(tempCard);
-	tempCard.position = Vector2(125 * CardsinHand, 0);
 	CardsinHand += 1;
 	tempCard.name = str("PlayCard", CardsinHand);
-	
-	match CardsinHand:
-		1:
-			$CardArea/CardGrid/LeftGap.custom_minimum_size = Vector2(287.5, 0);
-		2:
-			$CardArea/CardGrid/LeftGap.custom_minimum_size = Vector2(215.625, 0);
-		3:
-			$CardArea/CardGrid/LeftGap.custom_minimum_size = Vector2(143.75, 0);
-		4:
-			$CardArea/CardGrid/LeftGap.custom_minimum_size = Vector2(71.875, 0);
-		5:
-			$CardArea/CardGrid/LeftGap.custom_minimum_size = Vector2(0, 0);
-		6:
-			too_many = true;
-			for i in $CardArea/CardGrid.get_child_count():
-				if "CardGap" in $CardArea/CardGrid.get_child(i).name:
-					$CardArea/CardGrid.get_child(i).queue_free();
-		_:
-			print("too many!");
+	Position();
 
-	#if too_many == false:
-	#	var tempsep = separation.instantiate()
-	#	tempsep.name = str("CardGap", CardsinHand);
-	#	$CardArea/CardGrid.add_child(tempsep);
-	#	tempsep.custom_minimum_size = Vector2(18.75, 0);
+func Position():
+	if(CardsinHand == 1):
+		$CardArea/CardGrid.get_child(0).position = Vector2((700-CardSize)/2, 0);
+	elif(CardsinHand <= 5):
+		var CardGap: float = CardSize + 18.75;
+		for i in CardsinHand-1:
+			$CardArea/CardGrid.get_child(i).position = Vector2($CardArea/CardGrid.get_child(i).position.x - CardGap/2, 0);
+		$CardArea/CardGrid.get_child(CardsinHand-1).position = Vector2($CardArea/CardGrid.get_child(CardsinHand-2).position.x + CardGap, 0);
+	else:
+		var CardGap: float = (700-CardSize)/(CardsinHand-1);
+		for i in CardsinHand:
+			$CardArea/CardGrid.get_child(i).position = Vector2(CardGap*i, 0);
