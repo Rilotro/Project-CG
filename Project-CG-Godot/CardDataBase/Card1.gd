@@ -16,4 +16,4 @@ func _process(delta):
 func Activated(Target):
 	print("activated1");
 	Target.Damaged(10);
-	get_parent().queue_free();
+	self.get_parent().get_parent().get_parent().get_parent().FreeCard(self);

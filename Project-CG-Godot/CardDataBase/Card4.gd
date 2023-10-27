@@ -18,4 +18,4 @@ func Activated(Target):
 	print("activated4");
 	Target.Damaged(2);
 	Target.Damaged(2);
-	get_parent().queue_free();
+	self.get_parent().get_parent().get_parent().get_parent().FreeCard(self);

@@ -15,3 +15,6 @@ func Clicked(Target):
 	for i in Hand.get_child_count():
 		if(("PlayCard" in Hand.get_child(i).name)&&(Hand.get_child(i).active == true)):
 			Hand.get_child(i).Activated(Target);
+
+func DrawButton():
+	$VBoxContainer/CardArea/Hand.Draw();

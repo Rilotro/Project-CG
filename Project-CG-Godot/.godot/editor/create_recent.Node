@@ -1,12 +1,12 @@
-Node2D
+Label
+CenterContainer
+MarginContainer
 CollisionShape2D
 Area2D
 Sprite2D
-MarginContainer
-Label
+Node2D
 HBoxContainer
 VBoxContainer
-CenterContainer
 TextEdit
 CanvasLayer
 RichTextLabel

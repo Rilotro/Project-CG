@@ -46,3 +46,8 @@ func deactivate():
 func Activated(Target):
 	$Control.Activated(Target);
 
+
+
+func _on_tree_exited():
+	#get_parent().get_parent().get_parent().Position();
+	pass
