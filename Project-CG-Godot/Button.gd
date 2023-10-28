@@ -10,7 +10,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if((Input.is_action_just_pressed("Click"))&&(entered == true)):
-		get_node("/root/TestScene").DrawButton();
+		get_node("/root").get_child(0).DrawButton();
 
 func _on_area_2d_mouse_entered():
 	entered = true;

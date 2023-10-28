@@ -1,10 +1,10 @@
-extends MarginContainer
+extends HBoxContainer
 
 @export var CardSize = 125;
 @export var CDB = [];
 @export var CardCount = 4;
 @export var Card: PackedScene;
-@export var separation: PackedScene;
+#@export var separation: PackedScene;
 var rng = RandomNumberGenerator.new();
 var too_many = false;
 var CardsinHand = 0;
@@ -28,22 +28,24 @@ func _process(delta):
 func Draw():
 	var tempCard = Card.instantiate();
 	tempCard.add_child(CDB[rng.randi_range(0, 3)].instantiate());
-	$CardArea/CardGrid.add_child(tempCard);
+	add_child(tempCard);
 	CardsinHand += 1;
 	tempCard.name = str("PlayCard", CardsinHand);
 	Position();
 
 func Position():
-	print($CardArea/CardGrid.get_child_count());
-	if(CardsinHand <= 5):
+	print(get_child_count());
+	if(CardsinHand == 0):
+		print("no cards!");
+	elif(CardsinHand <= 5):
 		var CardGap: float = CardSize + 18.75;
-		$CardArea/CardGrid.get_child(0).position = Vector2((700-CardSize-CardGap*(CardsinHand-1))/2, 0);
+		get_child(1).position = Vector2((700-CardSize-CardGap*(CardsinHand-1))/2, 2.5);
 		for i in CardsinHand-1:
-			$CardArea/CardGrid.get_child(i+1).position = Vector2($CardArea/CardGrid.get_child(i).position.x + CardGap, 0);
+			get_child(i+2).position = Vector2(get_child(i+1).position.x + CardGap, 2.5);
 	else:
 		var CardGap: float = (700-CardSize)/(CardsinHand-1);
 		for i in CardsinHand:
-			$CardArea/CardGrid.get_child(i).position = Vector2(CardGap*i, 0);
+			get_child(i+1).position = Vector2(CardGap*i, 2.5);
 
 func FreeCard(CCU):
 	CCU.get_parent().queue_free();

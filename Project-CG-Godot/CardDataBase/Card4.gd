@@ -16,6 +16,7 @@ func _process(delta):
 
 func Activated(Target):
 	print("activated4");
+	get_node("/root").get_child(0).ManaSpent(mana);
 	Target.Damaged(2);
 	Target.Damaged(2);
-	self.get_parent().get_parent().get_parent().get_parent().FreeCard(self);
+	self.get_parent().get_parent().FreeCard(self);

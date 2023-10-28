@@ -32,12 +32,13 @@ func _on_area_2d_mouse_exited():
 	entered = false;
 
 func activate():
-	for i in self.get_parent().get_child_count():
-		if(("PlayCard" in self.get_parent().get_child(i).name) && (get_parent().get_child(i).active == true)):
-			get_parent().get_child(i).deactivate();
+	if(get_node("/root").get_child(0).getMana() >= $Control.mana):
+		for i in self.get_parent().get_child_count():
+			if(("PlayCard" in self.get_parent().get_child(i).name) && (get_parent().get_child(i).active == true)):
+				get_parent().get_child(i).deactivate();
 
-	$Border.modulate = Color(0.1, 0.25, 1);
-	active = true;
+		$Border.modulate = Color(0.1, 0.25, 1);
+		active = true;
 
 func deactivate():
 	$Border.modulate = Color(1, 1, 1);
@@ -45,9 +46,3 @@ func deactivate():
 
 func Activated(Target):
 	$Control.Activated(Target);
-
-
-
-func _on_tree_exited():
-	#get_parent().get_parent().get_parent().Position();
-	pass

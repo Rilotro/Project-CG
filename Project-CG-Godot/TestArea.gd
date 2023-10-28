@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var Hand = $VBoxContainer/CardArea/Hand;
+@onready var Mana = $VBoxContainer/PlayArea/VBoxContainer/Mana;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,10 +13,17 @@ func _process(delta):
 	pass
 
 func Clicked(Target):
-	var Hand = $VBoxContainer/CardArea/Hand/CardArea/CardGrid;
 	for i in Hand.get_child_count():
 		if(("PlayCard" in Hand.get_child(i).name)&&(Hand.get_child(i).active == true)):
 			Hand.get_child(i).Activated(Target);
 
+func ManaSpent(Spent):
+	Mana.ChangeMana(Spent);
+
 func DrawButton():
-	$VBoxContainer/CardArea/Hand.Draw();
+	Mana.ChangeMana(-1);
+	Hand.Draw();
+
+func getMana():
+	return Mana.mana;
+

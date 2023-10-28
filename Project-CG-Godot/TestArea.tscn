@@ -1,12 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cg4lga2y0442p"]
+[gd_scene load_steps=14 format=3 uid="uid://cg4lga2y0442p"]
 
 [ext_resource type="Script" path="res://TestArea.gd" id="1_0x4aj"]
 [ext_resource type="PackedScene" uid="uid://tp5xxm7ht2e5" path="res://Enemy.tscn" id="1_5muhv"]
 [ext_resource type="Script" path="res://Hand.gd" id="1_tt5gw"]
-[ext_resource type="PackedScene" uid="uid://bjgbpwf8ldb5g" path="res://leftgap.tscn" id="2_4c85l"]
 [ext_resource type="PackedScene" uid="uid://j20k4ptfofui" path="res://Player.tscn" id="2_b4ner"]
 [ext_resource type="Script" path="res://Button.gd" id="4_0xwmv"]
 [ext_resource type="PackedScene" uid="uid://difax4xn5cwg4" path="res://Card.tscn" id="5_nnvgt"]
+[ext_resource type="Script" path="res://Mana.gd" id="5_q5eiw"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_g6itp"]
 
@@ -14,6 +14,13 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_6oadh"]
 font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_r8a04"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2krcx"]
+font_size = 18
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1lk3j"]
 
@@ -66,11 +73,10 @@ custom_minimum_size = Vector2(1, 125)
 layout_mode = 2
 
 [node name="Button" type="Node2D" parent="VBoxContainer/PlayArea/VBoxContainer"]
-position = Vector2(571, 259)
+position = Vector2(571, 246.5)
 script = ExtResource("4_0xwmv")
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/PlayArea/VBoxContainer/Button"]
-modulate = Color(0, 0, 1, 1)
 scale = Vector2(150, 50)
 texture = SubResource("CanvasTexture_g6itp")
 
@@ -102,38 +108,55 @@ layout_mode = 2
 text = "DRAW"
 label_settings = SubResource("LabelSettings_6oadh")
 
+[node name="Mana" type="Node2D" parent="VBoxContainer/PlayArea/VBoxContainer"]
+position = Vector2(571, 284)
+script = ExtResource("5_q5eiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/PlayArea/VBoxContainer/Mana"]
+scale = Vector2(150, 25)
+texture = SubResource("CanvasTexture_r8a04")
+
+[node name="ManaSize" type="Sprite2D" parent="VBoxContainer/PlayArea/VBoxContainer/Mana"]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(150, 25)
+texture = SubResource("CanvasTexture_r8a04")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlayArea/VBoxContainer/Mana"]
+custom_minimum_size = Vector2(150, 25)
+offset_left = -75.0
+offset_top = -12.5
+offset_right = 75.0
+offset_bottom = 12.5
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/PlayArea/VBoxContainer/Mana/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PlayArea/VBoxContainer/Mana/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_2krcx")
+
 [node name="CardArea" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="LeftGap" type="MarginContainer" parent="VBoxContainer/CardArea"]
 custom_minimum_size = Vector2(226, 0)
 layout_mode = 2
 
-[node name="Hand" type="MarginContainer" parent="VBoxContainer/CardArea"]
+[node name="Hand" type="HBoxContainer" parent="VBoxContainer/CardArea"]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
+theme_override_constants/separation = 0
 script = ExtResource("1_tt5gw")
 Card = ExtResource("5_nnvgt")
-separation = ExtResource("2_4c85l")
 
-[node name="CardArea" type="VBoxContainer" parent="VBoxContainer/CardArea/Hand"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/CardArea/Hand/CardArea"]
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/CardArea/Hand"]
 modulate = Color(0, 0.498039, 0, 1)
 position = Vector2(350, 90)
 scale = Vector2(700, 180)
 texture = SubResource("CanvasTexture_1lk3j")
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CardArea/Hand/CardArea"]
-custom_minimum_size = Vector2(0, 2.5)
-layout_mode = 2
-
-[node name="CardGrid" type="HBoxContainer" parent="VBoxContainer/CardArea/Hand/CardArea"]
-layout_mode = 2
-theme_override_constants/separation = 0
 
 [connection signal="mouse_entered" from="VBoxContainer/PlayArea/VBoxContainer/Button/Area2D" to="VBoxContainer/PlayArea/VBoxContainer/Button" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/PlayArea/VBoxContainer/Button/Area2D" to="VBoxContainer/PlayArea/VBoxContainer/Button" method="_on_area_2d_mouse_exited"]
