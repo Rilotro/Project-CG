@@ -22,7 +22,3 @@ func _on_area_2d_mouse_exited():
 
 func Damaged(DMG):
 	$VBoxContainer/HealthContainer.ReceiveDMG(DMG);
-	EnemyTurn();
-
-func EnemyTurn():
-	get_node("/root").get_child(0).EnemyAttack(10);

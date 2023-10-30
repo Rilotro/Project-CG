@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var Hand = $VBoxContainer/CardArea/Hand;
 @onready var Mana = $VBoxContainer/PlayArea/VBoxContainer/Mana;
+@onready var Player = $VBoxContainer/PlayArea/VBoxContainer/PlayerArea/Player;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,4 +27,7 @@ func DrawButton():
 
 func getMana():
 	return Mana.mana;
+
+func EnemyAttack(DMG):
+	Player.Damaged(DMG);
 

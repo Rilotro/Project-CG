@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Hand.gd" id="1_tt5gw"]
 [ext_resource type="PackedScene" uid="uid://j20k4ptfofui" path="res://Player.tscn" id="2_b4ner"]
 [ext_resource type="Script" path="res://Button.gd" id="4_0xwmv"]
-[ext_resource type="PackedScene" uid="uid://difax4xn5cwg4" path="res://Card.tscn" id="5_nnvgt"]
+[ext_resource type="PackedScene" uid="uid://difax4xn5cwg4" path="res://card.tscn" id="5_nnvgt"]
 [ext_resource type="Script" path="res://Mana.gd" id="5_q5eiw"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_g6itp"]
