@@ -52,3 +52,12 @@ func FreeCard(CCU):
 	CardsinHand -= 1;
 	repoTimer = 0.25;
 	reposition = true;
+
+func RoundStart():
+	for i in 4:
+		Draw();
+	get_node("/root").get_child(0).ManaSpent(-3);
+
+func RoundEnd():
+	for i in CardsinHand:
+		FreeCard(get_child(i+1).get_child(get_child(i+1).get_child_count()-1));

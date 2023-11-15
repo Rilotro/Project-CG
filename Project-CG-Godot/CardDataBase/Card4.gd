@@ -14,9 +14,11 @@ func _ready():
 func _process(delta):
 	pass
 
-func Activated(Target):
+func Activated(Target, BDMG):
 	print("activated4");
 	get_node("/root").get_child(0).ManaSpent(mana);
-	Target.Damaged(2);
-	Target.Damaged(2);
+	get_node("/root").get_child(0).GainCooldown(1, cooldown);
+	get_node("/root").get_child(0).PlayerGainStrength(1);
+	Target.Damaged(2+BDMG+1);
+	Target.Damaged(2+BDMG+1);
 	self.get_parent().get_parent().FreeCard(self);

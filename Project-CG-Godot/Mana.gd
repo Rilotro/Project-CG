@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var mana = 3;
+@export var mana = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

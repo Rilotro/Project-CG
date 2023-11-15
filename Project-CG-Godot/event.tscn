@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct8pmd8cw8sbd"]
+
+[ext_resource type="Script" path="res://Event.gd" id="1_u202w"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_80e13"]
+
+[node name="Event" type="Node2D"]
+scale = Vector2(30, 30)
+script = ExtResource("1_u202w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_80e13")

@@ -13,7 +13,7 @@ func _ready():
 func _process(delta):
 	if((Input.is_action_just_pressed("Click"))&&(entered == true)):
 		activate();
-	
+
 func assign_info(CardDataBase):
 	CDB = CardDataBase;
 	if(CDB != null):
@@ -44,5 +44,5 @@ func deactivate():
 	$Border.modulate = Color(1, 1, 1);
 	active = false;
 
-func Activated(Target):
-	$Control.Activated(Target);
+func Activated(Target, BDMG):
+	$Control.Activated(Target, BDMG);

@@ -1,6 +1,7 @@
 extends Control
 
 var entered = false;
+var strength = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,3 +23,6 @@ func _on_area_2d_mouse_exited():
 
 func Damaged(DMG):
 	$VBoxContainer/HealthContainer.ReceiveDMG(DMG);
+
+func GainStrength(Gain):
+	strength += Gain;
